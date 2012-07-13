@@ -30,7 +30,11 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 Insert the portfolio in your page or post with this shortcode
 
-`[nimble-portfolio template="TEMPLATE_CODE"]` (where `TEMPLATE_CODE` is the folder name of template you want to use from templates folder)
+`[nimble-portfolio template="TEMPLATE_CODE"]`
+
+where `TEMPLATE_CODE` is the folder name of template you want to use from templates folder.
+
+Right now there is only one template available "3colround", which is also the default, so you can also use this shortcode `[nimble-portfolio]`
 
 = Demo =
 
