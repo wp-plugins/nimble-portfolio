@@ -38,6 +38,12 @@ Right now there is only one template available "3colround", which is also the de
 
 Go to http://www.nimble3.com/portfolio
 
+= Upgrade Notice =
+
+When you upgrade, the following problems may arise.
+1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.
+2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.
+
 == Installation ==
 
 1. Download the plugin<br />
