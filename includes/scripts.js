@@ -8,7 +8,7 @@ jQuery('document').ready(function() {
 		jQuery('div.nimble-portfolio-filter ul .current').removeClass('current');
 		jQuery(this).parent().addClass('current');
 	
-		var filterVal = jQuery(this).text().toLowerCase();
+		var filterVal = jQuery(this).attr('rel');
 
 		if(filterVal == 'all') {
 			jQuery('div.nimble-portfolio ul li.hidden').fadeIn('normal').removeClass('hidden');

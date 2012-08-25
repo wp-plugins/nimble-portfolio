@@ -2,8 +2,8 @@
 <div class="content group nimble-portfolio-content">
     <div class="nimble-portfolio-filter group">
         <ul class="nimble-portfolio-ul">
-            <li class="current"><a href="#">All</a></li>
-            <?php wp_list_categories('taxonomy=type&title_li='); ?>
+            <li class="current"><a href="#" rel="all">All</a></li>
+            <?php nimble_portfolio_list_categories(); ?>
         </ul>
     </div><!-- /nimble-portfolio-filter -->            
     <div class="nimble-portfolio three group">
@@ -11,8 +11,7 @@
             <div class="nimble-portfolio-ul-div">
                 <?php $portfolio = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => '-1')); ?>
                 <?php while ($portfolio->have_posts()) : $portfolio->the_post(); ?>
-                    <?php $terms_as_text = get_the_term_list($post->ID, 'type', '', ' ', ''); ?>
-                    <li class="<?php echo strtolower(strip_tags($terms_as_text)); ?> bigcard" >
+                    <li class="<?php nimble_portfolio_get_item_classes(get_the_ID()); ?> bigcard" >
                         <h6><?php the_title(); ?></h6>    
                         <div class="nimble-portfolio-holder">
                             <?php $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), array(303, 203), false, ''); ?>

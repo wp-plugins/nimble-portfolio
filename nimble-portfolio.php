@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.0.0
+  Version: 1.1.0
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -15,8 +15,12 @@ define('NIMBLE_PORTFOLIO_INCLUDES_DIR', NIMBLE_PORTFOLIO_DIR . "/includes");
 define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/nimble-portfolio");
 define('NIMBLE_PORTFOLIO_TEMPLATES_URL', NIMBLE_PORTFOLIO_URL . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_URL', NIMBLE_PORTFOLIO_URL . "/includes");
+global $nimble_portfolio_column_desc;
 
-add_theme_support('post-thumbnails');
+$nimble_portfolio_column_desc['sort-order'] = 'Sort Order';
+
+add_theme_support('post-thumbnails', array('portfolio'));
+
 function nimble_portfolio_get_meta($field) {
     global $post;
     $custom_field = get_post_meta($post->ID, $field, true);
@@ -25,7 +29,9 @@ function nimble_portfolio_get_meta($field) {
 
 // Register Portfolio post type
 add_action('init', 'nimble_portfolio_register');
+
 function nimble_portfolio_register() {
+
     $labels = array(
         'name' => __('Portfolio Items'),
         'singular_name' => __('Portfolio Item'),
@@ -48,19 +54,21 @@ function nimble_portfolio_register() {
         'hierarchical' => true,
         'rewrite' => true,
         'supports' => array('title', 'thumbnail', 'editor', 'excerpt'),
-        'taxonomies' => array('type')
+        'taxonomies' => array('nimble-portfolio-type')
     );
 
     register_post_type('portfolio', $args);
 }
 
 add_action('init', 'nimble_portfolio_register_taxonomies', 0);
+
 function nimble_portfolio_register_taxonomies() {
-    register_taxonomy('type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
+    register_taxonomy('nimble-portfolio-type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
 }
 
 // Register custom JS scripts
-add_action('init', 'nimble_portfolio_enqueue_scripts');
+add_action('wp_head', 'nimble_portfolio_enqueue_scripts');
+
 function nimble_portfolio_enqueue_scripts() {
 
     wp_register_script('fancybox', NIMBLE_PORTFOLIO_INCLUDES_URL . '/fancybox/jquery.fancybox-1.3.1.js', 'jquery');
@@ -72,11 +80,13 @@ function nimble_portfolio_enqueue_scripts() {
 }
 
 add_action('init', 'nimble_portfolio_enqueue_styles');
+
 function nimble_portfolio_enqueue_styles() {
-    wp_enqueue_style( 'fancybox_style', NIMBLE_PORTFOLIO_INCLUDES_URL . "/fancybox/jquery.fancybox-1.3.1.css", null, null, "screen" );
+    wp_enqueue_style('fancybox_style', NIMBLE_PORTFOLIO_INCLUDES_URL . "/fancybox/jquery.fancybox-1.3.1.css", null, null, "screen");
 }
 
 add_action('admin_head', 'nimble_portfolio_write_adminstyle');
+
 function nimble_portfolio_write_adminstyle() {
     ?><style type="text/css">
         .nimble-portfolio-meta-section input[type="text"] {
@@ -89,6 +99,7 @@ function nimble_portfolio_write_adminstyle() {
 }
 
 add_shortcode('nimble-portfolio', 'nimble_portfolio_show');
+
 function nimble_portfolio_show($atts) {
 
     $template_code = $atts;
@@ -101,6 +112,26 @@ function nimble_portfolio_show($atts) {
     require_once (NIMBLE_PORTFOLIO_TEMPLATES_DIR . "/$template_code/template.php");
 }
 
-// Add the Theme Write Panels
+function nimble_portfolio_list_categories() {
+    $_categories = get_categories('taxonomy=nimble-portfolio-type&title_li=');
+    foreach ($_categories as $_cat) {
+        ?>
+        <li class="cat-item cat-item-<?php echo $_cat->term_id; ?>">
+            <a title="View all posts filed under <?php echo $_cat->name; ?>" href="<?php echo get_term_link($_cat->slug, 'nimble-portfolio-type'); ?>" rel="<?php echo $_cat->slug; ?>"><?php echo $_cat->name; ?></a>
+        </li>
+        <?php
+    }
+}
+
+function nimble_portfolio_get_item_classes($post_id = null) {
+    if ($post_id === null)
+        return;
+    $_terms = wp_get_post_terms($post_id, 'nimble-portfolio-type');
+    foreach ($_terms as $_term) {
+        echo " " . $_term->slug;
+    }
+}
+
+// Add the Panels
 include("includes/add-meta-boxes.php");
 ?>
