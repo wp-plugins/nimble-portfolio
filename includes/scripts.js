@@ -12,10 +12,12 @@ jQuery('document').ready(function() {
 
 		if(filterVal == 'all') {
 			jQuery('div.nimble-portfolio ul li.hidden').fadeIn('normal').removeClass('hidden');
+                        
 		} else {
 			jQuery('div.nimble-portfolio ul li').each(function() {
 				if(!jQuery(this).hasClass(filterVal)) {
 					jQuery(this).fadeOut('normal').addClass('hidden');
+    
 				} else {
 					jQuery(this).fadeIn('normal').removeClass('hidden');
 				}
@@ -24,31 +26,9 @@ jQuery('document').ready(function() {
 	
 		return false;
 	});
-	
-	// LIGHTBOX FANCYBOX
-	
-	jQuery("a[rel=fancybox]").fancybox();
-	
-	jQuery("a[rel=youtube]").click(function() {
-		jQuery.fancybox({
-				'padding'		: 0,
-				'autoScale'		: false,
-				'transitionIn'	: 'none',
-				'transitionOut'	: 'none',
-				'title'			: this.title,
-				'width'			: 680,
-				'height'		: 495,
-				'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
-				'type'			: 'swf',
-				'swf'			: {
-				   	 'wmode'		: 'transparent',
-					'allowfullscreen'	: 'true'
-				}
-			});
-	
-		return false;
-	});
+        
+        // PrettyPhoto Lightbox
+	jQuery("a[rel^='lightbox'], a[rel^='youtube'], a[rel^='fancybox']").prettyPhoto();
 	
 	
-
 });

@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.1.0
+  Version: 1.2.0
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -12,11 +12,13 @@
 define('NIMBLE_PORTFOLIO_DIR', dirname(__FILE__));
 define('NIMBLE_PORTFOLIO_TEMPLATES_DIR', NIMBLE_PORTFOLIO_DIR . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_DIR', NIMBLE_PORTFOLIO_DIR . "/includes");
-define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/nimble-portfolio");
+define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/" . basename(NIMBLE_PORTFOLIO_DIR));
 define('NIMBLE_PORTFOLIO_TEMPLATES_URL', NIMBLE_PORTFOLIO_URL . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_URL', NIMBLE_PORTFOLIO_URL . "/includes");
-global $nimble_portfolio_column_desc;
 
+global $nimble_portfolio_column_desc;
+global $nimble_portfolio_version;
+$nimble_portfolio_version = get_option('nimble-portfolio-version');
 $nimble_portfolio_column_desc['sort-order'] = 'Sort Order';
 
 add_theme_support('post-thumbnails', array('portfolio'));
@@ -44,7 +46,7 @@ function nimble_portfolio_register() {
         'not_found' => __('No Portfolio Items found'),
         'not_found_in_trash' => __('No Portfolio Items found in Trash'),
         'parent_item_colon' => '',
-        'menu_name' => 'Portfolio Items'
+        'menu_name' => __('Portfolio Items')
     );
     $args = array(
         'labels' => $labels,
@@ -64,25 +66,63 @@ add_action('init', 'nimble_portfolio_register_taxonomies', 0);
 
 function nimble_portfolio_register_taxonomies() {
     register_taxonomy('nimble-portfolio-type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
+        
+	if (count(get_terms('nimble-portfolio-type', 'hide_empty=0')) == 0) {
+		register_taxonomy('type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
+		$_categories = get_categories('taxonomy=type&title_li=');
+		foreach ($_categories as $_cat) {
+			if (!term_exists( $_cat->name, 'nimble-portfolio-type') )
+				wp_insert_term( $_cat->name, 'nimble-portfolio-type' );
+		}
+		$portfolio = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => '-1'));
+		while ($portfolio->have_posts()) : $portfolio->the_post();
+			$post_id = get_the_ID();
+			$_terms = wp_get_post_terms( $post_id, 'type' );
+			$terms = array();
+			foreach ($_terms as $_term) {
+				$terms[] = $_term->term_id;
+			}	
+			wp_set_post_terms( $post_id , $terms, 'nimble-portfolio-type');
+		endwhile;
+		wp_reset_query();
+	}
+    
 }
 
+
+add_filter( 'attribute_escape', 'rename_second_menu_name', 10, 2 );
+
+function rename_second_menu_name( $safe_text, $text )
+{
+    if ( __('Portfolio Items', 'nimble_portfolio_context') !== $text )
+    {
+        return $safe_text;
+    }
+
+    // We are on the main menu item now. The filter is not needed anymore.
+    remove_filter( 'attribute_escape', 'rename_second_menu_name' );
+
+    return __('Nimble Portfolio', 'nimble_portfolio_context');
+}
+
+
 // Register custom JS scripts
-add_action('wp_head', 'nimble_portfolio_enqueue_scripts');
+add_action('init', 'nimble_portfolio_enqueue_scripts');
 
 function nimble_portfolio_enqueue_scripts() {
 
-    wp_register_script('fancybox', NIMBLE_PORTFOLIO_INCLUDES_URL . '/fancybox/jquery.fancybox-1.3.1.js', 'jquery');
+    wp_register_script('prettyphoto', NIMBLE_PORTFOLIO_INCLUDES_URL . '/prettyphoto/jquery.prettyPhoto.js', 'jquery');
     wp_register_script('nimble_portfolio_scripts', NIMBLE_PORTFOLIO_INCLUDES_URL . '/scripts.js', 'jquery');
 
     wp_enqueue_script('jquery');
-    wp_enqueue_script('fancybox');
+    wp_enqueue_script('prettyphoto');
     wp_enqueue_script('nimble_portfolio_scripts');
 }
 
 add_action('init', 'nimble_portfolio_enqueue_styles');
 
 function nimble_portfolio_enqueue_styles() {
-    wp_enqueue_style('fancybox_style', NIMBLE_PORTFOLIO_INCLUDES_URL . "/fancybox/jquery.fancybox-1.3.1.css", null, null, "screen");
+    wp_enqueue_style('prettyphoto_style', NIMBLE_PORTFOLIO_INCLUDES_URL . "/prettyphoto/prettyPhoto.css", null, null, "screen");
 }
 
 add_action('admin_head', 'nimble_portfolio_write_adminstyle');

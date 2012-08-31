@@ -1,28 +1,26 @@
 <?php
 
 function nimble_portfolio_create_section() {
-    add_meta_box('nimble-portfolio-section', 'Image/Video URL', 'nimble_portfolio_section', 'portfolio', 'normal', 'high');
-    add_meta_box('nimble-portfolio-url-section', 'Portfolio URL', 'nimble_portfolio_url_section', 'portfolio', 'normal', 'high');
+    add_meta_box('nimble-portfolio-section-options', __('Options', 'nimble_portfolio_context'), 'nimble_portfolio_section_options', 'portfolio', 'normal', 'high');
 }
 
 add_action('admin_menu', 'nimble_portfolio_create_section');
 
-function nimble_portfolio_section() {
+function nimble_portfolio_section_options() {
     ?>
     <div class="nimble-portfolio-meta-section">
-        <label><input type="radio" name="nimble_portfolio_type" value="v" <?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio-type')) == "v" ? " checked='checked' " : ""; ?> /> Video (Only youtube URL is supported)</label><br />
-        <label><input type="radio" name="nimble_portfolio_type" value="i" <?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio-type')) != "v" ? " checked='checked' " : ""; ?> /> Image</label><br />
-        <input type="text" name="nimble_portfolio" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio')); ?>" /><br />
-        <p>Enter URL for the full-size image or a link to a youtube video you want to display in this portfolio.</p>
-    </div>
-    <?php
-}
-
-function nimble_portfolio_url_section() {
-    ?>
-    <div class="nimble-portfolio-meta-section">
-        <input type="text" name="nimble_portfolio_url" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio-url')); ?>" /><br />
-        <p>Enter URL to the live version of the project.</p>
+        <div class="form-wrap">
+            <div class="form-field">
+                <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context')?></label>
+                <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio')); ?>" />
+                <p><?php _e('Enter URL for the full-size image or a link to a youtube video you want to display in this portfolio.', 'nimble_portfolio_context')?></p>
+            </div>            
+            <div class="form-field">
+                <label for="nimble_portfolio_url"><?php _e('Portfolio URL', 'nimble_portfolio_context')?></label>
+                <input type="text" name="nimble_portfolio_url" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio-url')); ?>" />
+                <p><?php _e('Enter URL to the live version of the project.', 'nimble_portfolio_context')?></p>
+            </div>            
+        </div>
         <input type="hidden" name="nimble_portfolio_noncename" id="nimble_portfolio_noncename" value="<?php echo wp_create_nonce(plugin_basename(__FILE__)); ?>" />
     </div>
     <?php
@@ -46,7 +44,6 @@ function nimble_portfolio_save_data($post_id, $post) {
     // We'll put it into an array to make it easier to loop though.
     $mydata = array();
     $mydata['nimble-portfolio'] = $_POST['nimble_portfolio'];
-    $mydata['nimble-portfolio-type'] = $_POST['nimble_portfolio_type'];
     $mydata['nimble-portfolio-url'] = $_POST['nimble_portfolio_url'];
 
     // Add values of $mydata as custom fields

@@ -16,7 +16,7 @@
                         <div class="nimble-portfolio-holder">
                             <?php $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), array(303, 203), false, ''); ?>
                             <div class="nimble-portfolio-item" style="background: url(<?php echo $src[0]; ?> ) !important;">
-                                <a href="<?php echo nimble_portfolio_get_meta('nimble-portfolio'); ?>" rel="<?php echo (nimble_portfolio_get_meta('nimble-portfolio-type') == 'v') ? 'youtube' : 'fancybox'; ?>" >
+                                <a href="<?php echo nimble_portfolio_get_meta('nimble-portfolio'); ?>" rel="lightbox[nimble_portfolio_gal]" >
                                     <div class="nimble-portfolio-rollerbg"></div>	
                                 </a>
                             </div> 
