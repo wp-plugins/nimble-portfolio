@@ -38,6 +38,14 @@ Right now there is only one template available "3colround", which is also the de
 
 Go to http://www.nimble3.com/portfolio
 
+= Premium Version =
+With Premium featue such as:<br />
+1. Category Order Sorting<br />
+2. Item Order Sorting<br />
+3. Display Selected Types and Manage Multiple Portfolios<br /><br />
+
+Go to http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
+
 = Upgrade Notice =
 
 When you upgrade, the following problems may arise.
