@@ -42,19 +42,19 @@ Go to http://www.nimble3.com/portfolio
 
 = Premium Version =
 
-With Premium featue such as:
-1. Category Order Sorting.
-2. Item Order Sorting.
-3. Display Selected Types and Manage Multiple Portfolios.
-4. More templates - use Round or Square 3 and 4 column templates.
+With Premium featue such as:<br />
+1. Category Order Sorting.<br />
+2. Item Order Sorting.<br />
+3. Display Selected Types and Manage Multiple Portfolios.<br />
+4. More templates - use Round or Square 3 and 4 column templates.<br />
 
 Go to http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
 
 = Upgrade Notice =
 
-When you upgrade, the following problems may arise.
-1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.
-2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.
+When you upgrade, the following problems may arise.<br />
+1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
+2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
 
 == Installation ==
 
@@ -73,12 +73,19 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 
 == Changelog ==
 
-=29/06/2012= – 1.0.0 – First release<br />
-=25/08/2012= – 1.1.0 – First upgrade<br />
+=29/06/2012=
+
+1.0.0 – First release<br />
+
+=25/08/2012= 
+
+1.1.0 – First upgrade<br />
+
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
 2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
 
-=25/08/2012= – 1.1.0 – Second upgrade<br />
+=31/08/2012=
+1.2.0 – Second upgrade<br />
 1. A small bug that was hiding the item types.<br />
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
 
