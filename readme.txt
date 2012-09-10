@@ -10,8 +10,7 @@ License: GPLv2 or later
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
 == Description ==
 
-=== Nimble Portfolio ===
-
+<h3>Nimble Portfolio</h3>
 Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
 
 = Plugin Features =
