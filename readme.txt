@@ -1,12 +1,13 @@
-=== Nimble Portfolio ===
+=== Filterable jQuery Portfolio Plugin - Nimble Portfolio ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
 Tags: filterable portfolio, jquery portfolio, sortable portfolio
 Requires at least: 3.0.1
-Tested up to: 3.4.1
+Tested up to: 3.4.2
 Stable tag: 1.2.0
 License: GPLv2 or later
 
+This powerful portfolio plugin is highly suitable to showcase your work / portfoilio and group them nicely under jQuery powered tabs.
 == Description ==
 
 Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
@@ -39,10 +40,11 @@ Right now there is only one template available "3colround", which is also the de
 Go to http://www.nimble3.com/portfolio
 
 = Premium Version =
-With Premium featue such as:<br />
-1. Category Order Sorting<br />
-2. Item Order Sorting<br />
-3. Display Selected Types and Manage Multiple Portfolios<br /><br />
+
+With Premium featue such as:
+1. Category Order Sorting
+2. Item Order Sorting
+3. Display Selected Types and Manage Multiple Portfolios
 
 Go to http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
 
