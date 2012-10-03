@@ -1,7 +1,7 @@
 === Filterable jQuery Portfolio Plugin ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: filterable portfolio, jquery portfolio, sortable portfolio
+Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, prettyphoto gallery, multiple prettyphoto galleries
 Requires at least: 3.0.1
 Tested up to: 3.4.2
 Stable tag: 1.2.0
@@ -34,7 +34,7 @@ Insert the portfolio in your page or post with this shortcode
 
 `[nimble-portfolio template="TEMPLATE_CODE"]` (where `TEMPLATE_CODE` is the folder name of template you want to use from templates folder)
 
-Right now there is only one template available "3colround", which is also the default, so you can also use this shortcode `[nimble-portfolio]`
+Right now there is only one template available (in free version), i.e. "3colround", which is also the default, so you can also use this shortcode `[nimble-portfolio]`
 
 = Demo =
 
@@ -46,9 +46,12 @@ With Premium featue such as:<br />
 1. Category Order Sorting.<br />
 2. Item Order Sorting.<br />
 3. Display Selected Types and Manage Multiple Portfolios.<br />
-4. More templates - use Round or Square 3 and 4 column templates.<br />
-
-Go to http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
+4. Shortcode Generator.<br />
+5. Pagination Support for Large Portfolios.<br />
+6. Configurable Separate Gallery for each Item.<br />
+7. Making use of Quick Sand Plugin and Configurable CSS3 Transformation.<br />
+8. More templates - use Round or Square 3 and 4 column templates.<br /><br />
+To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
 
 = Upgrade Notice =
 
@@ -79,18 +82,18 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 
 =25/08/2012= 
 
-1.1.0 – First upgrade<br />
-
+1.1.0 – First upgrade<br /><br />
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
 2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
 
 =31/08/2012=
-1.2.0 – Second upgrade<br />
+
+1.2.0 – Second upgrade<br /><br />
 1. A small bug that was hiding the item types.<br />
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
 
 == Upgrade Notice ==
 
-When you upgrade, the following problems may arise.
-1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.
-2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.
+When you upgrade, the following problems may arise.<br /><br />
+1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
+2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
