@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, prettyphoto gallery, multiple prettyphoto galleries
 Requires at least: 3.0.1
 Tested up to: 3.4.2
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -42,7 +42,7 @@ Go to http://www.nimble3.com/portfolio
 
 = Premium Version =
 
-With Premium featue such as:<br />
+With Premium features such as:<br />
 1. Category Order Sorting.<br />
 2. Item Order Sorting.<br />
 3. Display Selected Types and Manage Multiple Portfolios.<br />
@@ -57,7 +57,7 @@ To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-
 
 When you upgrade, the following problems may arise.<br />
 1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
-2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
+2. (Only if upgrading from version 1.0.0) Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
 
 == Installation ==
 
@@ -92,8 +92,14 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 1. A small bug that was hiding the item types.<br />
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
 
+=12/10/2012=
+
+1.2.1 – Third (minor) upgrade<br /><br />
+1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
+2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
+
 == Upgrade Notice ==
 
 When you upgrade, the following problems may arise.<br /><br />
 1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
-2. Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
+2. (Only if upgrading from version 1.0.0) Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
