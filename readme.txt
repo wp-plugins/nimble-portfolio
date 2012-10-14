@@ -38,7 +38,7 @@ Right now there is only one template available (in free version), i.e. "3colroun
 
 = Demo =
 
-Go to http://www.nimble3.com/portfolio
+Go to http://www.nimble3.com/portfolio-demo/
 
 = Premium Version =
 
