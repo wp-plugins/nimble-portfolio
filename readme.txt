@@ -36,7 +36,9 @@ Insert the portfolio in your page or post with this shortcode
 
 = PHP Code =
 
-`nimble_portfolio()` and `nimble_portfolio_show()`
+`nimble_portfolio()` 
+and 
+`nimble_portfolio_show()`
 
 = Demo =
 
