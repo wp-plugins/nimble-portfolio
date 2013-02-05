@@ -1,9 +1,9 @@
 <?php
 /*
   Plugin Name: Nimble Portfolio
-  Plugin URI: http://www.nimble3.com/
+  Plugin URI: http://www.nimble3.com/portfolio-demo
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.2.1
+  Version: 1.2.2
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -16,17 +16,25 @@ define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/" . basename(NIMBLE_PORTFOLIO_D
 define('NIMBLE_PORTFOLIO_TEMPLATES_URL', NIMBLE_PORTFOLIO_URL . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_URL', NIMBLE_PORTFOLIO_URL . "/includes");
 
-global $nimble_portfolio_column_desc;
-global $nimble_portfolio_version;
-$nimble_portfolio_version = get_option('nimble-portfolio-version');
-$nimble_portfolio_column_desc['sort-order'] = 'Sort Order';
-
 add_theme_support('post-thumbnails', array('portfolio'));
 
 function nimble_portfolio_get_meta($field) {
     global $post;
     $custom_field = get_post_meta($post->ID, $field, true);
     return $custom_field;
+}
+
+register_activation_hook(__FILE__, 'nimble_portfolio_activate');
+
+function nimble_portfolio_activate() {
+    nimble_portfolio_register();
+    flush_rewrite_rules();
+}
+
+register_deactivation_hook(__FILE__, 'nimble_portfolio_deactivate');
+
+function nimble_portfolio_deactivate() {
+    flush_rewrite_rules();
 }
 
 // Register Portfolio post type
@@ -55,7 +63,20 @@ function nimble_portfolio_register() {
         'capability_type' => 'post',
         'hierarchical' => true,
         'rewrite' => true,
-        'supports' => array('title', 'thumbnail', 'editor', 'excerpt'),
+        'supports' => array(
+            'title',
+            'thumbnail',
+            'editor',
+            'excerpt',
+            //'author',
+            //'trackbacks',
+            //'custom-fields',
+            //'comments', 
+            //'revisions', 
+            //'page-attributes'
+        ),
+        'menu_position' => 23,
+        'menu_icon' => NIMBLE_PORTFOLIO_URL.'/icon.png',
         'taxonomies' => array('nimble-portfolio-type')
     );
 
@@ -66,45 +87,41 @@ add_action('init', 'nimble_portfolio_register_taxonomies', 0);
 
 function nimble_portfolio_register_taxonomies() {
     register_taxonomy('nimble-portfolio-type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
-        
-	if (count(get_terms('nimble-portfolio-type', 'hide_empty=0')) == 0) {
-		register_taxonomy('type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
-		$_categories = get_categories('taxonomy=type&title_li=');
-		foreach ($_categories as $_cat) {
-			if (!term_exists( $_cat->name, 'nimble-portfolio-type') )
-				wp_insert_term( $_cat->name, 'nimble-portfolio-type' );
-		}
-		$portfolio = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => '-1'));
-		while ($portfolio->have_posts()) : $portfolio->the_post();
-			$post_id = get_the_ID();
-			$_terms = wp_get_post_terms( $post_id, 'type' );
-			$terms = array();
-			foreach ($_terms as $_term) {
-				$terms[] = $_term->term_id;
-			}	
-			wp_set_post_terms( $post_id , $terms, 'nimble-portfolio-type');
-		endwhile;
-		wp_reset_query();
-	}
-    
+
+    if (count(get_terms('nimble-portfolio-type', 'hide_empty=0')) == 0) {
+        register_taxonomy('type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type'));
+        $_categories = get_categories('taxonomy=type&title_li=');
+        foreach ($_categories as $_cat) {
+            if (!term_exists($_cat->name, 'nimble-portfolio-type'))
+                wp_insert_term($_cat->name, 'nimble-portfolio-type');
+        }
+        $portfolio = new WP_Query(array('post_type' => 'portfolio', 'posts_per_page' => '-1'));
+        while ($portfolio->have_posts()) : $portfolio->the_post();
+            $post_id = get_the_ID();
+            $_terms = wp_get_post_terms($post_id, 'type');
+            $terms = array();
+            foreach ($_terms as $_term) {
+                $terms[] = $_term->term_id;
+            }
+            wp_set_post_terms($post_id, $terms, 'nimble-portfolio-type');
+        endwhile;
+        wp_reset_query();
+        register_taxonomy('type', array());
+    }
 }
 
+add_filter('attribute_escape', 'rename_second_menu_name', 10, 2);
 
-add_filter( 'attribute_escape', 'rename_second_menu_name', 10, 2 );
-
-function rename_second_menu_name( $safe_text, $text )
-{
-    if ( __('Portfolio Items', 'nimble_portfolio_context') !== $text )
-    {
+function rename_second_menu_name($safe_text, $text) {
+    if (__('Portfolio Items', 'nimble_portfolio_context') !== $text) {
         return $safe_text;
     }
 
     // We are on the main menu item now. The filter is not needed anymore.
-    remove_filter( 'attribute_escape', 'rename_second_menu_name' );
+    remove_filter('attribute_escape', 'rename_second_menu_name');
 
     return __('Nimble Portfolio', 'nimble_portfolio_context');
 }
-
 
 // Register custom JS scripts
 add_action('init', 'nimble_portfolio_enqueue_scripts');
@@ -156,7 +173,7 @@ function nimble_portfolio_show($atts) {
     if (!$template_code)
         $template_code = "3colround";
 
-    require_once (NIMBLE_PORTFOLIO_TEMPLATES_DIR . "/$template_code/template.php");
+    require (NIMBLE_PORTFOLIO_TEMPLATES_DIR . "/$template_code/template.php");
 }
 
 function nimble_portfolio_list_categories() {
@@ -181,4 +198,3 @@ function nimble_portfolio_get_item_classes($post_id = null) {
 
 // Add the Panels
 include("includes/add-meta-boxes.php");
-?>

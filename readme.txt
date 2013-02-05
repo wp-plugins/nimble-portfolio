@@ -1,10 +1,10 @@
 === Filterable jQuery Portfolio Plugin ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, prettyphoto gallery, multiple prettyphoto galleries
+Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.0.1
-Tested up to: 3.4.2
-Stable tag: 1.2.1
+Tested up to: 3.5.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -32,9 +32,11 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 Insert the portfolio in your page or post with this shortcode
 
-`[nimble-portfolio template="TEMPLATE_CODE"]` (where `TEMPLATE_CODE` is the folder name of template you want to use from templates folder)
+`[nimble-portfolio]`
 
-Right now there is only one template available (in free version), i.e. "3colround", which is also the default, so you can also use this shortcode `[nimble-portfolio]`
+= PHP Code =
+
+`nimble_portfolio()` and `nimble_portfolio_show()`
 
 = Demo =
 
@@ -50,7 +52,7 @@ With Premium features such as:<br />
 5. Pagination Support for Large Portfolios.<br />
 6. Configurable Separate Gallery for each Item.<br />
 7. Making use of Quick Sand Plugin and Configurable CSS3 Transformation.<br />
-8. More templates - use Round or Square 3 and 4 column templates.<br /><br />
+8. More templates.<br /><br />
 To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
 
 = Upgrade Notice =
@@ -97,6 +99,13 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 1.2.1 – Third (minor) upgrade<br /><br />
 1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
 2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
+
+=05/02/2013=
+
+1.2.2 – Fourth upgrade<br /><br />
+1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
+2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
+3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
 
 == Upgrade Notice ==
 
