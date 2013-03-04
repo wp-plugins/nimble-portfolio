@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/portfolio-demo
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.2.2
+  Version: 1.2.3
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later

@@ -14,7 +14,7 @@
                     <li class="<?php nimble_portfolio_get_item_classes(get_the_ID()); ?> bigcard" >
                         <h6><?php the_title(); ?></h6>    
                         <div class="nimble-portfolio-holder">
-                            <?php $src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), array(303, 203), false, ''); ?>
+                            <?php $src = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), array(303, 203), false, ''); ?>
                             <div class="nimble-portfolio-item" style="background: url(<?php echo $src[0]; ?> ) !important;">
                                 <a href="<?php echo nimble_portfolio_get_meta('nimble-portfolio'); ?>" rel="lightbox[nimble_portfolio_gal]" >
                                     <div class="nimble-portfolio-rollerbg"></div>	

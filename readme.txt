@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
