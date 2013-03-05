@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -86,28 +86,39 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 
 =25/08/2012= 
 
-1.1.0 – First upgrade<br /><br />
+1.1.0<br /><br />
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
 2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
 
 =31/08/2012=
 
-1.2.0 – Second upgrade<br /><br />
+1.2.0<br /><br />
 1. A small bug that was hiding the item types.<br />
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
 
 =12/10/2012=
 
-1.2.1 – Third (minor) upgrade<br /><br />
+1.2.1<br /><br />
 1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
 2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
 
 =05/02/2013=
 
-1.2.2 – Fourth upgrade<br /><br />
+1.2.2<br /><br />
 1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
 2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
 3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
+
+=04/03/2013=
+
+1.2.3<br /><br />
+1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)<br />
+
+=05/03/2013=
+
+1.2.4<br /><br />
+1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
+2. Fixed - After filter, gallery showing all images<br />
 
 == Upgrade Notice ==
 
