@@ -22,11 +22,11 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 = Usage Instructions =
 
-1) Add portfolio item types under `Nimble Portfolio -> Item Type`, such as web, mobile, graphics e.t.c.
-2) Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
-3) Upload and set featured image from the far right bottom box.
-4) Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
-5) Specify a live URL for your project in the input field `Portfolio URL`.
+1) Add portfolio item types under `Nimble Portfolio -> Item Type`, such as web, mobile, graphics e.t.c.<br />
+2) Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.<br />
+3) Upload and set featured image from the far right bottom box.<br />
+4) Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.<br />
+5) Specify a live URL for your project in the input field `Portfolio URL`.<br />
 
 = Shortcode =
 
