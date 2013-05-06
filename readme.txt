@@ -1,10 +1,10 @@
 === Filterable jQuery Portfolio Plugin ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
+Tags: portfolio, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.2.4
+Stable tag: 1.2.5
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -22,11 +22,11 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 = Usage Instructions =
 
-1. Add portfolio item types under the 'Nimble Portfolio' tab in dashboard such as web, mobile, graphics etc.
-2. Add new portfolio items using custom post type under the tab 'Nimble Portfolio'.
-3. Add item title (keep it short), add description.
-4. Then upload featured image from the far right bottom box. Once the image is uploaded first copy the generated URL from the field ‘Link URL’ then hit ‘use as featured image’ link at the bottom, then close the window. Paste the copied URL in the input field ‘image/video url’ on the left.
-5. Specify a live URL for your project in the input field ‘portfolio url’.
+1) Add portfolio item types under `Nimble Portfolio -> Item Type`, such as web, mobile, graphics e.t.c.
+2) Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
+3) Upload and set featured image from the far right bottom box.
+4) Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
+5) Specify a live URL for your project in the input field `Portfolio URL`.
 
 = Shortcode =
 
@@ -119,6 +119,11 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 1.2.4<br /><br />
 1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
 2. Fixed - After filter, gallery showing all images<br />
+
+=06/05/2013=
+
+1.2.5<br /><br />
+1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.<br />
 
 == Upgrade Notice ==
 

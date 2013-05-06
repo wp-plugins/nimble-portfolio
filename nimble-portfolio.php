@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/portfolio-demo
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.2.4
+  Version: 1.2.5
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -142,9 +142,19 @@ function nimble_portfolio_enqueue_styles() {
     wp_enqueue_style('prettyphoto_style', NIMBLE_PORTFOLIO_INCLUDES_URL . "/prettyphoto/prettyPhoto.css", null, null, "screen");
 }
 
-add_action('admin_head', 'nimble_portfolio_write_adminstyle');
+add_action('admin_head', 'nimble_portfolio_write_adminhead');
 
-function nimble_portfolio_write_adminstyle() {
+function nimble_portfolio_write_adminhead() {
+    if (function_exists('wp_enqueue_media')) {
+        wp_register_script('admin_media_lib_35', NIMBLE_PORTFOLIO_INCLUDES_URL . '/admin-media-lib-35.js', 'jquery', NIMBLE_PORTFOLIO_VERSION);
+        wp_enqueue_script('admin_media_lib_35');
+    } else {
+        wp_enqueue_style('thickbox');
+        wp_enqueue_script('media-upload');
+        wp_enqueue_script('thickbox');
+        wp_register_script('admin_media_lib', NIMBLE_PORTFOLIO_INCLUDES_URL . '/admin-media-lib.js', 'jquery', NIMBLE_PORTFOLIO_VERSION);
+        wp_enqueue_script('admin_media_lib');
+    }
     ?><style type="text/css">
         .nimble-portfolio-meta-section input[type="text"] {
             width: 98%;

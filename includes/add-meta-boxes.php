@@ -12,8 +12,9 @@ function nimble_portfolio_section_options() {
         <div class="form-wrap">
             <div class="form-field">
                 <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context')?></label>
-                <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio')); ?>" />
-                <p><?php _e('Enter URL for the full-size image or a link to a youtube video you want to display in this portfolio.', 'nimble_portfolio_context')?></p>
+                <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo htmlspecialchars(nimble_portfolio_get_meta('nimble-portfolio')); ?>" style="width:70%;" />
+                <a id="nimble_portfolio_media_lib" href="javascript:void(0);" class="button" rel="nimble_portfolio">URL from Media Library</a>
+                <p><?php _e('Enter URL for the full-size image or video (youtube, vimeo, swf, quicktime) you want to display in the lightbox gallery. You can also choose Image URL from your Media gallery', 'nimble_portfolio_context')?></p>
             </div>            
             <div class="form-field">
                 <label for="nimble_portfolio_url"><?php _e('Portfolio URL', 'nimble_portfolio_context')?></label>
