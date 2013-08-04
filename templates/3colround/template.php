@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo NIMBLE_PORTFOLIO_TEMPLATES_URL . "/3colround/template.css"; ?>" />
-<div class="content group nimble-portfolio-content">
+<link rel="stylesheet" type="text/css" href="<?php echo NIMBLE_PORTFOLIO_TEMPLATES_URL . "/$template_code/template.css"; ?>" />
+<div class="content group nimble-portfolio-content nimble-portfolio-template-<?php echo $template_code; ?>">
     <div class="nimble-portfolio-filter group">
         <ul class="nimble-portfolio-ul">
             <li class="current"><a href="#" rel="all">All</a></li>
