@@ -1,10 +1,10 @@
 === Filterable jQuery Portfolio Plugin ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: portfolio, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
-Requires at least: 3.0.1
-Tested up to: 3.5.1
-Stable tag: 1.2.5
+Tags: portfolio, gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
+Requires at least: 3.3
+Tested up to: 3.6
+Stable tag: 1.3.0
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -48,13 +48,13 @@ Go to http://www.nimble3.com/portfolio-demo/
 
 With Premium features such as:<br />
 1. Category Order Sorting.<br />
-2. Item Order Sorting.<br />
+2. Advanced Item Order Sorting (on date, title, sort order number, randomize e.t.c.)<br />
 3. Display Selected Types and Manage Multiple Portfolios.<br />
 4. Shortcode Generator.<br />
 5. Pagination Support for Large Portfolios.<br />
 6. Configurable Separate Gallery for each Item.<br />
 7. Making use of Quick Sand Plugin and Configurable CSS3 Transformation.<br />
-8. More templates.<br /><br />
+8. More templates. (including Responsive template for responsive themes)<br /><br />
 To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
 
 = Upgrade Notice =
@@ -80,50 +80,59 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 
 == Changelog ==
 
-=29/06/2012=
+= 29 Jun 2012 =
 
 1.0.0 – First release<br />
 
-=25/08/2012= 
+= 25 Aug 2012 = 
 
 1.1.0<br /><br />
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
 2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
 
-=31/08/2012=
+= 31 Aug 2012 =
 
 1.2.0<br /><br />
 1. A small bug that was hiding the item types.<br />
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
 
-=12/10/2012=
+= 12 Oct 2012 =
 
 1.2.1<br /><br />
 1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
 2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
 
-=05/02/2013=
+= 05 Feb 2013 =
 
 1.2.2<br /><br />
 1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
 2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
 3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
 
-=04/03/2013=
+= 04 Mar 2013 =
 
 1.2.3<br /><br />
 1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)<br />
 
-=05/03/2013=
+= 05 Mar 2013 =
 
 1.2.4<br /><br />
 1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
 2. Fixed - After filter, gallery showing all images<br />
 
-=06/05/2013=
+= 06 May 2013 =
 
 1.2.5<br /><br />
 1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.<br />
+
+= 05 Aug 2013 =
+
+1.3.0<br /><br />
+1. New Template. template code: 'round-1' <br />
+2. New Template. template code: 'rect-1' <br />
+3. Better thumbnail generation.<br />
+4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.
+5. Taxonomy slug changed to 'portfolio-type'
 
 == Upgrade Notice ==
 
