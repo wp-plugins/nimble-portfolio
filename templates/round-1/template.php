@@ -12,9 +12,9 @@
             <?php while ($portfolio->have_posts()) : $portfolio->the_post(); ?>
                 <li class="<?php nimble_portfolio_get_item_classes(get_the_ID()); ?>" >
                     <div class="nimble-portfolio-title"><?php the_title(); ?></div>
-                    <?php $src = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()), array(303, 203), false, ''); ?>
+                    <?php $src = nimble_portfolio_get_attachment_src(get_post_thumbnail_id(get_the_ID()), '216x217', false, ''); ?>
                     <div class="nimble-portfolio-item" style="background: url('<?php echo $src[0]; ?>') center center !important;">
-                        <a href="<?php echo nimble_portfolio_get_meta('nimble-portfolio'); ?>" rel="lightbox[nimble_portfolio_gal]" >
+                        <a href="<?php echo nimble_portfolio_get_meta('nimble-portfolio'); ?>" rel="lightbox[nimble_portfolio_gal_round_1]" >
                             <div class="nimble-portfolio-rollerbg"></div>	
                         </a>
                     </div> 
