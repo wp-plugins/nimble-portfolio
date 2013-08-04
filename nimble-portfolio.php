@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/portfolio-demo
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.2.5
+  Version: 1.3.0
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -15,6 +15,7 @@ define('NIMBLE_PORTFOLIO_INCLUDES_DIR', NIMBLE_PORTFOLIO_DIR . "/includes");
 define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/" . basename(NIMBLE_PORTFOLIO_DIR));
 define('NIMBLE_PORTFOLIO_TEMPLATES_URL', NIMBLE_PORTFOLIO_URL . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_URL', NIMBLE_PORTFOLIO_URL . "/includes");
+define('NIMBLE_PORTFOLIO_VERSION', '1.3.0');
 
 add_theme_support('post-thumbnails', array('portfolio'));
 
@@ -62,31 +63,31 @@ function nimble_portfolio_register() {
         'show_ui' => true,
         'capability_type' => 'post',
         'hierarchical' => true,
-        'rewrite' => true,
+        'rewrite' => array('slug' => 'portfolio'),
         'supports' => array(
             'title',
             'thumbnail',
             'editor',
             'excerpt',
-            //'author',
-            //'trackbacks',
-            //'custom-fields',
-            //'comments', 
-            //'revisions', 
-            //'page-attributes'
+        //'author',
+        //'trackbacks',
+        //'custom-fields',
+        //'comments', 
+        //'revisions', 
+        //'page-attributes'
         ),
         'menu_position' => 23,
-        'menu_icon' => NIMBLE_PORTFOLIO_URL.'/icon.png',
+        'menu_icon' => NIMBLE_PORTFOLIO_URL . '/icon.png',
         'taxonomies' => array('nimble-portfolio-type')
     );
 
     register_post_type('portfolio', $args);
+
+    nimble_portfolio_register_taxonomies();
 }
 
-add_action('init', 'nimble_portfolio_register_taxonomies', 0);
-
 function nimble_portfolio_register_taxonomies() {
-    register_taxonomy('nimble-portfolio-type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => true));
+    register_taxonomy('nimble-portfolio-type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type', 'query_var' => true, 'rewrite' => array('slug' => 'portfolio-type')));
 
     if (count(get_terms('nimble-portfolio-type', 'hide_empty=0')) == 0) {
         register_taxonomy('type', 'portfolio', array('hierarchical' => true, 'label' => 'Item Type'));
@@ -128,8 +129,8 @@ add_action('init', 'nimble_portfolio_enqueue_scripts');
 
 function nimble_portfolio_enqueue_scripts() {
 
-    wp_register_script('prettyphoto', NIMBLE_PORTFOLIO_INCLUDES_URL . '/prettyphoto/jquery.prettyPhoto.js', 'jquery');
-    wp_register_script('nimble_portfolio_scripts', NIMBLE_PORTFOLIO_INCLUDES_URL . '/scripts.js', 'jquery');
+    wp_register_script('prettyphoto', NIMBLE_PORTFOLIO_INCLUDES_URL . '/prettyphoto/jquery.prettyPhoto.js', array('jquery'), NIMBLE_PORTFOLIO_VERSION);
+    wp_register_script('nimble_portfolio_scripts', NIMBLE_PORTFOLIO_INCLUDES_URL . '/scripts.js', array('jquery'), NIMBLE_PORTFOLIO_VERSION);
 
     wp_enqueue_script('jquery');
     wp_enqueue_script('prettyphoto');
@@ -167,14 +168,14 @@ function nimble_portfolio_write_adminhead() {
 
 add_shortcode('nimble-portfolio', 'nimble_portfolio');
 
-function nimble_portfolio($atts=array()) {
+function nimble_portfolio($atts = array()) {
     ob_start();
     nimble_portfolio_show($atts);
     $content = ob_get_clean();
     return $content;
 }
 
-function nimble_portfolio_show($atts=array()) {
+function nimble_portfolio_show($atts = array()) {
 
     $template_code = $atts;
     if (isset($atts["template"]) && $atts["template"])
@@ -206,5 +207,106 @@ function nimble_portfolio_get_item_classes($post_id = null) {
     }
 }
 
+function nimble_portfolio_get_attachment_src($attachment_id, $size_name = 'thumbnail') {
+
+    global $_wp_additional_image_sizes;
+    $size_name = trim($size_name);
+    $meta = wp_get_attachment_metadata($attachment_id);
+
+    if (empty($meta['sizes']) || empty($meta['sizes'][$size_name])) {
+
+        // let's first see if this is a registered size
+        if (isset($_wp_additional_image_sizes[$size_name])) {
+            $height = (int) $_wp_additional_image_sizes[$size_name]['height'];
+            $width = (int) $_wp_additional_image_sizes[$size_name]['width'];
+            $crop = (bool) $_wp_additional_image_sizes[$size_name]['crop'];
+
+            // if not, see if name is of form [width]x[height] and use that to crop
+        } else if (preg_match('#^(\d+)x(\d+)$#', $size_name, $matches)) {
+            $height = (int) $matches[2];
+            $width = (int) $matches[1];
+            $crop = true;
+        }
+
+        if (!empty($height) && !empty($width)) {
+            $resized_path = nimble_portfolio_generate_attachment($attachment_id, $width, $height, $crop);
+            $fullsize_url = wp_get_attachment_url($attachment_id);
+
+            $file_name = basename($resized_path);
+            $new_url = str_replace(basename($fullsize_url), $file_name, $fullsize_url);
+
+            if (!empty($resized_path)) {
+                $meta['sizes'][$size_name] = array(
+                    'file' => $file_name,
+                    'width' => $width,
+                    'height' => $height,
+                );
+
+                wp_update_attachment_metadata($attachment_id, $meta);
+                return array(
+                    $new_url,
+                    $width,
+                    $height
+                );
+            }
+        }
+    }
+    return wp_get_attachment_image_src($attachment_id, $size_name);
+}
+
+function nimble_portfolio_generate_attachment($attachment_id = 0, $width = 0, $height = 0, $crop = true) {
+    $attachment_id = (int) $attachment_id;
+    $width = (int) $width;
+    $height = (int) $height;
+    $crop = (bool) $crop;
+
+    $original_path = get_attached_file($attachment_id);
+
+    $resized_path = @image_resize($original_path, $width, $height, $crop);
+
+    if (
+            !is_wp_error($resized_path) &&
+            !is_array($resized_path)
+    ) {
+        return $resized_path;
+
+        // perhaps this image already exists.  If so, return it.
+    } else {
+        $orig_info = pathinfo($original_path);
+        $suffix = "{$width}x{$height}";
+        $dir = $orig_info['dirname'];
+        $ext = $orig_info['extension'];
+        $name = basename($original_path, ".{$ext}");
+        $destfilename = "{$dir}/{$name}-{$suffix}.{$ext}";
+        if (file_exists($destfilename)) {
+            return $destfilename;
+        }
+    }
+
+    return '';
+}
+
+
+function nimble_portfolio_get_filetype($itemSrc) {
+    if(preg_match('/youtube\.com\/watch/i', $itemSrc) || preg_match('/youtu\.be/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/vimeo\.com/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.mov\b/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.swf\b/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.avi\b/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.mpg\b/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.mpeg\b/i', $itemSrc)) {
+        return 'video';
+    } else if(preg_match('/\b.mp4\b/i', $itemSrc)) {
+        return 'video';
+    } else {
+        return 'image';
+    }
+}
 // Add the Panels
 include("includes/add-meta-boxes.php");
