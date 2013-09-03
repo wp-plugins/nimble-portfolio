@@ -20,7 +20,7 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 3. Built-in PrettyPhoto gallery for image and video preview.
 4. Easy categorization and jQuery sort feature.
 
-= Usage Instructions =
+= Quick User Guide =
 
 1) Add portfolio item types under `Nimble Portfolio -> Item Type`, such as web, mobile, graphics e.t.c.<br />
 2) Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.<br />
@@ -28,21 +28,37 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 4) Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.<br />
 5) Specify a live URL for your project in the input field `Portfolio URL`.<br />
 
+= Detailed User Guide =
+
+Please download here http://www.nimble3.com/wp-content/uploads/2013/09/Nimble-Portfolio-Plugin-User-Guide.pdf
+
 = Shortcode =
 
-Insert the portfolio in your page or post with this shortcode
+Our free plugin comes with short code support and by default it uses the 3 column round template, so the following two short codes will entail the same result.
+`[nimble-portfolio]` and `[nimble-portfolio template="3colround"]`
 
-`[nimble-portfolio]`
+You can see from the above shortcode that the later part of the code refers to the use of template.
+
+== Additional Templates ==
+Fluid columns - round template
+`[nimble-portfolio template="round-1"]`
+
+Fluid columns - square template
+`[nimble-portfolio template="rect-1"]`
 
 = PHP Code =
 
-`nimble_portfolio()` 
-and 
+`echo nimble_portfolio()` 
+or
 `nimble_portfolio_show()`
+
+Please refer to Detailed user guide for Shortcode parameters.
 
 = Demo =
 
-Go to http://www.nimble3.com/portfolio-demo/
+Free: http://nimble3.com/demo/nimble-portfolio-free/
+
+Premium: http://www.nimble3.com/portfolio-demo/
 
 = Premium Version =
 
@@ -61,17 +77,14 @@ To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-
 
 When you upgrade, the following problems may arise.<br />
 1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
-2. (Only if upgrading from version 1.0.0) Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
 
 == Installation ==
 
-1. Download the plugin<br />
-2. Unzip the ZIP package on your hard drive<br />
-3. FTP upload the plugin files to the `plugins` folder on your WP installation<br />
+Use this guide http://www.nimble3.com/wp-content/uploads/2013/09/Nimble-Portfolio-Plugin-User-Guide.pdf for detailed Installation instructions.
 
 == Frequently Asked Questions ==
 
-Please post your comments and questions at `http://www.nimble3.com/nimble-portfolio-free-filterable-jquery-porfolio-wordpress-plugin/`
+Please use Support tab OR use this link http://wordpress.org/support/plugin/nimble-portfolio
 
 == Screenshots ==
 
@@ -138,4 +151,3 @@ Please post your comments and questions at `http://www.nimble3.com/nimble-portfo
 
 When you upgrade, the following problems may arise.<br /><br />
 1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.<br />
-2. (Only if upgrading from version 1.0.0) Your portfolio categories may be lost. Therefore, note down your category names and items under each category as you might be required to re-create all categories and re-assign items under them.<br />
