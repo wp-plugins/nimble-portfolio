@@ -41,7 +41,7 @@ and
 
 You can see from the above shortcode that the later part of the code refers to the use of template.
 
-= Additional Templates =
+<h3>Additional Templates</h3>
 
 Fluid columns - round template
 `[nimble-portfolio template="round-1"]`
