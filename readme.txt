@@ -41,7 +41,7 @@ and
 
 You can see from the above shortcode that the later part of the code refers to the use of template.
 
-<h5>Additional Templates</h5>
+<strong>Additional Templates</strong>
 
 Fluid columns - round template
 `[nimble-portfolio template="round-1"]`
@@ -59,9 +59,9 @@ Please refer to Detailed user guide for Shortcode parameters.
 
 = Demo =
 
-<h5>Free: http://nimble3.com/demo/nimble-portfolio-free/</h5>
+Free: http://nimble3.com/demo/nimble-portfolio-free/
 
-<h5>Premium: http://www.nimble3.com/portfolio-demo/</h5>
+Premium: http://www.nimble3.com/portfolio-demo/
 
 = Premium Version =
 
