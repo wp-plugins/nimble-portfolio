@@ -39,7 +39,7 @@ Our free plugin comes with short code support and by default it uses the 3 colum
 
 You can see from the above shortcode that the later part of the code refers to the use of template.
 
-== Additional Templates ==
+= Additional Templates =
 Fluid columns - round template
 `[nimble-portfolio template="round-1"]`
 
