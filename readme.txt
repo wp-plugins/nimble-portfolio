@@ -35,11 +35,14 @@ Please download here http://www.nimble3.com/wp-content/uploads/2013/09/Nimble-Po
 = Shortcode =
 
 Our free plugin comes with short code support and by default it uses the 3 column round template, so the following two short codes will entail the same result.
-`[nimble-portfolio]` and `[nimble-portfolio template="3colround"]`
+`[nimble-portfolio]` 
+and 
+`[nimble-portfolio template="3colround"]`
 
 You can see from the above shortcode that the later part of the code refers to the use of template.
 
 = Additional Templates =
+
 Fluid columns - round template
 `[nimble-portfolio template="round-1"]`
 
