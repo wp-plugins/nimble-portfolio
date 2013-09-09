@@ -1,8 +1,8 @@
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li {
     float:left;
     margin:0 8px 0 0
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a {
     display:block;
     padding:0 10px;
     line-height:25px;
@@ -16,20 +16,20 @@
     background:-moz-linear-gradient(90deg, #fdfdfd, #f9f9f9);
     background:-webkit-gradient(linear, center top, center bottom, from(#fdfdfd), to(#f9f9f9));
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a:hover {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a:hover {
     text-decoration: none;
     background:#f4f4f4;
     background:-moz-linear-gradient(90deg, #e7e7e7, #ffffff);
     background:-webkit-gradient(linear, center top, center bottom, from(#e7e7e7), to(#ffffff));
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a:active, .nimble-portfolio-filter ul li.current a {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-filter ul li a:active, .nimble-portfolio-filter ul li.current a {
     background:#e7e7e7;
     -webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
     -moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05);
     box-shadow:inset 0 1px 1px rgba(0, 0, 0, .05)
 }
 
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-ul {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-ul {
     float:left;
     list-style:none;
     margin:0;
@@ -37,7 +37,7 @@
     font-size:12px;
 }
 
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio ul li {
+.nimble-portfolio-template-rect-1 .nimble-portfolio ul li {
     background-color:#fff;
     float:left;
     width:216px;
@@ -45,13 +45,13 @@
     list-style:none;
 }
 
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-item {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-item {
     width:216px;
     height:160px;
     display:block;
     background-repeat:no-repeat;
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-links {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-links {
     text-align:center;
     margin:0 0 0 32px;
     display:block;
@@ -59,7 +59,7 @@
     clear:both;
 }
 
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio ul li a.button-fixed, .nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .description a.button-fixed {
+.nimble-portfolio-template-rect-1 .nimble-portfolio ul li a.button-fixed, .nimble-portfolio-template-rect-1 .description a.button-fixed {
     float:left;
     font-size:11px;
     font-weight:400;
@@ -69,7 +69,7 @@
     text-align:left;
     width:88px
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-title{
+.nimble-portfolio-template-rect-1 .nimble-portfolio-title{
     margin:5px 0;
     font-size:14px;
     overflow: hidden;
@@ -79,7 +79,7 @@
     font-weight: bold;
 }
 
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-thumb-shadow{
+.nimble-portfolio-template-rect-1 .nimble-portfolio-thumb-shadow{
     background: url("images/gallery_shadow.png") no-repeat scroll 0 0 transparent;
     bottom: -21px;
     display: block;
@@ -87,17 +87,17 @@
     right: -12px;
     z-index: -2147483648;
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg {
     background-repeat:no-repeat;
     width:216px;
     height:160px;
     display:block;
     background-position: center center;
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg-image:hover {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg-image:hover {
     background-image:url(images/image-hover.png);
 }
-.nimble-portfolio-template-round-2.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg-video:hover {
+.nimble-portfolio-template-rect-1 .nimble-portfolio-rollerbg-video:hover {
     background-image:url(images/video-hover.png);
 }
 
