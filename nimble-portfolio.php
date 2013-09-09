@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://www.nimble3.com/portfolio-demo
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 1.3.0
+  Version: 1.3.1
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -15,13 +15,23 @@ define('NIMBLE_PORTFOLIO_INCLUDES_DIR', NIMBLE_PORTFOLIO_DIR . "/includes");
 define('NIMBLE_PORTFOLIO_URL', WP_PLUGIN_URL . "/" . basename(NIMBLE_PORTFOLIO_DIR));
 define('NIMBLE_PORTFOLIO_TEMPLATES_URL', NIMBLE_PORTFOLIO_URL . "/templates");
 define('NIMBLE_PORTFOLIO_INCLUDES_URL', NIMBLE_PORTFOLIO_URL . "/includes");
-define('NIMBLE_PORTFOLIO_VERSION', '1.3.0');
+define('NIMBLE_PORTFOLIO_VERSION', '1.3.1');
 
 add_theme_support('post-thumbnails', array('portfolio'));
 
 function nimble_portfolio_get_meta($field) {
     global $post;
     $custom_field = get_post_meta($post->ID, $field, true);
+    switch ($field) {
+        case 'nimble-portfolio':
+            if (preg_match('/\.pdf/', $custom_field)) {
+                $pdf_src = urlencode($custom_field);
+                $custom_field = "http://docs.google.com/viewer?url=$pdf_src&embedded=true&iframe=true&width=100%&height=100%";
+            }
+            break;
+        default :
+            break;
+    }
     return $custom_field;
 }
 
