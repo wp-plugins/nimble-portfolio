@@ -1,10 +1,10 @@
-=== Filterable jQuery Portfolio Plugin ===
+=== Filterable jQuery Portfolio/Gallery ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: portfolio, gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
+Tags: portfolio, gallery, media gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -17,7 +17,7 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 1. Custom post types for portfolio items.
 2. Youtube, Vimeo, Quicktime video support.
-3. Built-in PrettyPhoto gallery for image and video preview.
+3. Built-in PrettyPhoto gallery for image, video and <strong>PDF</strong> preview.
 4. Easy categorization and jQuery sort feature.
 
 = Quick User Guide =
@@ -43,19 +43,23 @@ You can see from the above shortcode that the later part of the code refers to t
 
 <strong>Additional Templates</strong>
 
-Fluid columns - round template
+Fluid columns - round template - variation 1
 `[nimble-portfolio template="round-1"]`
 
-Fluid columns - square template
+Fluid columns - square template - variation 1
 `[nimble-portfolio template="rect-1"]`
+
+Fluid columns - round template - variation 2
+`[nimble-portfolio template="round-2"]`
+
+Fluid columns - square template - variation 2
+`[nimble-portfolio template="rect-2"]`
 
 = PHP Code =
 
 `echo nimble_portfolio()` 
 or
 `nimble_portfolio_show()`
-
-Please refer to Detailed user guide for Shortcode parameters.
 
 = Demo =
 
@@ -147,8 +151,15 @@ Please use Support tab OR use this link http://wordpress.org/support/plugin/nimb
 1. New Template. template code: 'round-1' <br />
 2. New Template. template code: 'rect-1' <br />
 3. Better thumbnail generation.<br />
-4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.
-5. Taxonomy slug changed to 'portfolio-type'
+4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.<br />
+5. Taxonomy slug changed to 'portfolio-type'<br />
+
+= 09 Sep 2013 =
+
+1.3.1<br /><br />
+1. PDF support for lightbox gallery.
+2. New Template variation for Round template. template code: 'round-2' <br />
+3. New Template variation for Rectangular template. template code: 'rect-2' <br />
 
 == Upgrade Notice ==
 
