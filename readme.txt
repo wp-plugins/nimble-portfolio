@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: portfolio, gallery, media gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.3
 Tested up to: 3.6
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 
 This powerful portfolio plugin is highly suitable to showcase your work / portfolio and group them nicely under jQuery powered tabs.
@@ -100,50 +100,17 @@ Please use Support tab OR use this link http://wordpress.org/support/plugin/nimb
 
 == Changelog ==
 
-= 29 Jun 2012 =
+= 09 Sep 2013 =
 
-1.0.0 – First release<br />
+1.3.2<br /><br />
+rect-1 template CSS fix
 
-= 25 Aug 2012 = 
+= 09 Sep 2013 =
 
-1.1.0<br /><br />
-1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
-2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
-
-= 31 Aug 2012 =
-
-1.2.0<br /><br />
-1. A small bug that was hiding the item types.<br />
-2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
-
-= 12 Oct 2012 =
-
-1.2.1<br /><br />
-1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
-2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
-
-= 05 Feb 2013 =
-
-1.2.2<br /><br />
-1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
-2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
-3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
-
-= 04 Mar 2013 =
-
-1.2.3<br /><br />
-1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)<br />
-
-= 05 Mar 2013 =
-
-1.2.4<br /><br />
-1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
-2. Fixed - After filter, gallery showing all images<br />
-
-= 06 May 2013 =
-
-1.2.5<br /><br />
-1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.<br />
+1.3.1<br /><br />
+1. PDF support for lightbox gallery.<br />
+2. New Template variation for Round template. template code: 'round-2' <br />
+3. New Template variation for Rectangular template. template code: 'rect-2' <br />
 
 = 05 Aug 2013 =
 
@@ -154,12 +121,59 @@ Please use Support tab OR use this link http://wordpress.org/support/plugin/nimb
 4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.<br />
 5. Taxonomy slug changed to 'portfolio-type'<br />
 
-= 09 Sep 2013 =
+= 06 May 2013 =
 
-1.3.1<br /><br />
-1. PDF support for lightbox gallery.
-2. New Template variation for Round template. template code: 'round-2' <br />
-3. New Template variation for Rectangular template. template code: 'rect-2' <br />
+1.2.5<br /><br />
+1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.<br />
+
+= 05 Mar 2013 =
+
+1.2.4<br /><br />
+1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
+2. Fixed - After filter, gallery showing all images<br />
+
+= 04 Mar 2013 =
+
+1.2.3<br /><br />
+1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)<br />
+
+= 05 Feb 2013 =
+
+1.2.2<br /><br />
+1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
+2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
+3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
+
+= 12 Oct 2012 =
+
+1.2.1<br /><br />
+1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
+2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
+
+= 31 Aug 2012 =
+
+1.2.0<br /><br />
+1. A small bug that was hiding the item types.<br />
+2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
+
+= 25 Aug 2012 = 
+
+1.1.0<br /><br />
+1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
+2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
+
+
+= 29 Jun 2012 =
+
+1.0.0 – First release<br />
+
+
+
+
+
+
+
+
 
 == Upgrade Notice ==
 
