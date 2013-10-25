@@ -1,5 +1,5 @@
 === Filterable jQuery Portfolio/Gallery ===
-Contributors: nimble3,mamirulamin
+Contributors: nimble3,mamirulamin,mubeenkhan
 Donate link: http://www.nimble3.com
 Tags: portfolio, gallery, media gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
 Requires at least: 3.3
