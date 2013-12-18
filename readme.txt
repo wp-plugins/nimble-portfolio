@@ -7,7 +7,7 @@ Tested up to: 3.8
 Stable tag: 1.3.2
 License: GPLv2 or later
 
-This powerful portfolio/gallery plugin is highly suitable to showcase your work / portfolio / images / documents and group them nicely under jQuery powered tabs.
+A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/images/videos/documents and group them nicely under filterable tabs.
 == Description ==
 
 <h3>Nimble Portfolio</h3>
