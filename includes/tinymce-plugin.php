@@ -18,17 +18,23 @@ $skins = apply_filters('nimble_portfolio_skin_register', array());
                     var skin = jQuery('#nimble_portfolio_tinymce_skin').val();
                     var hide_filters = jQuery('#nimble_portfolio_tinymce_hide_filters').is(':checked');
 
-                    var output = '[nimble-portfolio ';
+                    var params = '';
 
                     if (skin) {
-                        output += 'skin="' + skin + '" ';
+                        params += 'skin="' + skin + '" ';
                     }
 
                     if (hide_filters) {
-                        output += 'hide_filters="' + hide_filters + '" ';
+                        params += 'hide_filters="' + hide_filters + '" ';
                     }
 
-                    output += ']';
+                    jQuery(document).on("nimble_portfolio_tinymce_param", function(event, obj) {
+                        params += event.result ? event.result : '';
+                    });
+                    
+                    jQuery(document).trigger("nimble_portfolio_tinymce_param", {});
+
+                    var output = '[nimble-portfolio ' + params + ']';
 
                     tinyMCEPopup.execCommand('mceReplaceContent', false, output);
 
@@ -49,7 +55,7 @@ $skins = apply_filters('nimble_portfolio_skin_register', array());
                                 'skin': skin
                             },
                     function(response) {
-                       $('#nimble_portfolio_tinymce_skin_ajax_response').html(response);
+                        $('#nimble_portfolio_tinymce_skin_ajax_response').html(response);
                     })
                 });
             });
