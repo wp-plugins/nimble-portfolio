@@ -86,7 +86,7 @@ if (!class_exists('NimblePortfolio')) {
 
                 <?php if (!$this->atts['hide_filters']) { ?>
                     <div class="-filters <?php echo apply_filters("nimble_portfolio_skin_filters_classes", "", $this->skin); ?>">
-                        <?php echo apply_filters('nimble_portfolio_filter_all', sprintf('<a href="#" rel="*" class="-filter active">%s</a>'), __("All")); ?>
+                        <?php echo apply_filters('nimble_portfolio_filter_all', sprintf('<a href="#" rel="*" class="-filter active">%s</a>', __("All"))); ?>
                         <?php require ($this->skinPath . "filters.php"); ?>
                     </div>        
                 <?php } ?>

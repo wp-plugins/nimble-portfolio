@@ -102,9 +102,11 @@ Please use Support tab OR use this link http://wordpress.org/support/plugin/nimb
 
 == Changelog ==
 
+When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
+
 = 16 Jun 2014 =
 
-<strong> Version 2.0.0 Released!</strong>
+"Version 2.0.0 Released!"
 
 What's New in Version 2
 ----------------------
@@ -118,7 +120,7 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
- 
+
 = 09 Sep 2013 =
 
 1.3.2<br /><br />
@@ -189,18 +191,5 @@ rect-1 template CSS fix
 == Upgrade Notice ==
 
 = Version 2 released =
-
-Whats New in Version 2
-
-- More of a  Framework than a Plugin
-     1. Developer/Designers can make additional Add-ons to extend features such as:
-        * Skins
-        * Lightbox galleries (like Swipebox, Fancybox)
-        * Sorting/Filtering libraries (like Isotope).
-
-- Default Skin Features
-     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-     2. 3 additional Skin Styles Included (Normal, Round and Square).
-     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
 When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
