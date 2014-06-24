@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.0.2
+  Version: 2.0.3
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -26,7 +26,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
         static private $dirUrl;
 
         static function init($params = array()) {
-            self::$version = '2.0.0';
+            self::$version = '2.0.3';
             self::$postType = 'portfolio';
             self::$postTypeSlug = apply_filters('nimble_portfolio_posttype_slug', 'portfolio');
             self::$taxonomy = 'nimble-portfolio-type';
@@ -43,9 +43,6 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
             add_action('init', array(__CLASS__, 'registerPostType'));
             add_action('init', array(__CLASS__, 'tinymceShortcodeButton'));
-
-
-
 
             add_shortcode('nimble-portfolio', array(__CLASS__, 'getPortfolio'));
 
@@ -66,10 +63,10 @@ if (!class_exists('NimblePortfolioPlugin')) {
         }
 
         function path2url($path) {
-            if (defined(ABSPATH)) {
+            if (!defined('ABSPATH')) {
                 return false;
             }
-            return trim(get_bloginfo('url'), '/\\') . "/" . str_replace("\\", "/", trim(substr_replace($path, '', 0, strlen(ABSPATH)), '/'));
+            return trim(site_url(), '/\\') . "/" . str_replace("\\", "/", trim(substr_replace($path, '', 0, strlen(ABSPATH)), '/'));
         }
 
         function getVersion() {
@@ -310,14 +307,6 @@ if (!class_exists('NimblePortfolioPlugin')) {
         }
 
         function adminOptions() {
-
-            $skins = apply_filters('nimble_portfolio_skin_register', array());
-            foreach ($skins as $skin) {
-                add_submenu_page('edit.php?post_type=' . self::$postType, 'Skin Settings: ' . $skin->label, 'Skin: ' . $skin->name, 'manage_options', 'nimble-portfolio-skin-setting-' . $skin->name, function() use ($skin) {
-                    include ( $skin->path . '/config.php');
-                });
-            }
-
             do_action('nimble_portfolio_create_section_before', self::$postType);
             add_meta_box('nimble-portfolio-section-options', __('Options', 'nimble_portfolio_context'), array(__CLASS__, 'renderOptions'), self::$postType, 'normal', 'high');
             do_action('nimble_portfolio_create_section_after', self::$postType);
@@ -328,13 +317,13 @@ if (!class_exists('NimblePortfolioPlugin')) {
             ?>
             <div class="nimble-portfolio-meta-section">
                 <div class="form-wrap">
-                    <div class="form-field">
-                        <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context') ?></label>
-                        <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo esc_attr($item->getData('nimble-portfolio')); ?>" style="width:70%;" />
-                        <a id="nimble_portfolio_media_lib" href="javascript:void(0);" class="button" rel="nimble_portfolio"><?php _e('URL from Media Library', 'nimble_portfolio_context') ?></a>
-                        <p><?php _e('Enter URL for the full-size image or video (youtube, vimeo, swf, quicktime) you want to display in the lightbox gallery. You can also choose Image URL from your Media gallery', 'nimble_portfolio_context') ?></p>
-                    </div>            
-                    <div class="form-field">
+                        <div class="form-field">
+                            <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context') ?></label>
+                            <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo esc_attr($item->getData('nimble-portfolio')); ?>" style="width:70%;" />
+                            <a id="nimble_portfolio_media_lib" href="javascript:void(0);" class="button" rel="nimble_portfolio"><?php _e('URL from Media Library', 'nimble_portfolio_context') ?></a>
+                            <p><?php _e('Enter URL for the full-size image or video (youtube, vimeo, swf, quicktime) you want to display in the lightbox gallery. You can also choose Image URL from your Media gallery', 'nimble_portfolio_context') ?></p>
+                        </div>            
+                        <div class="form-field">
                         <label for="nimble_portfolio_url"><?php _e('Portfolio URL', 'nimble_portfolio_context') ?></label>
                         <input type="text" name="nimble_portfolio_url" value="<?php echo esc_attr($item->getData('nimble-portfolio-url')); ?>" />
                         <p><?php _e('Enter URL to the live version of the project.', 'nimble_portfolio_context') ?></p>

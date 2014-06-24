@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -99,14 +99,11 @@ Please use Support tab OR use this link http://wordpress.org/support/plugin/nimb
 5. Nimble Portfolio - Frontend Display
 6. Nimble Portfolio - Picture in lightbox
 7. Nimble Portfolio - Video in lightbox
+8. Nimble Portfolio - Default Skin options
 
 == Changelog ==
 
 When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
-
-= 16 Jun 2014 =
-
-"Version 2.0.0 Released!"
 
 What's New in Version 2
 ----------------------
@@ -120,6 +117,26 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 24 Jun 2014 =
+
+2.0.3<br /><br />
+1. Replaced Skin menu registration procedure so the plugin will run on PHP version prior to 5.3.0
+2. site_url() used instead of get_bloginfo('url'); function to take care of sub-directory installation
+
+= 18 Jun 2014 =
+
+2.0.2<br /><br />
+Extended tinymce shortcode javascript, added custom jquery events to help add-ons
+
+= 17 Jun 2014 =
+
+2.0.1<br /><br />
+FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wordpress.org/support/topic/too-few-arguments-classnimbleportfoliophp))
+
+= 16 Jun 2014 =
+
+"Version 2.0.0 Released!"
 
 = 09 Sep 2013 =
 

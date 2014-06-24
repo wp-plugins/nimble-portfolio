@@ -20,6 +20,7 @@ if (!class_exists('NimblePortfolioSkin')) {
 
             add_filter('nimble_portfolio_skin_register', array($this, 'register'));
             add_filter('nimble_portfolio_skin_get_' . $this->name, array($this, 'get'));
+            add_action('nimble_portfolio_create_section_before', array($this, 'registerMenu'));
         }
 
         public function __get($name) {
@@ -50,6 +51,14 @@ if (!class_exists('NimblePortfolioSkin')) {
             $options = NimblePortfolioPlugin::getOptions();
             $options["-skin-" . $this->name] = $skin_options;
             NimblePortfolioPlugin::setOptions($options);
+        }
+
+        function registerMenu($post_type) {
+            add_submenu_page('edit.php?post_type=' . ($post_type ? $post_type : 'portfolio'), 'Skin Settings: ' . $this->label, 'Skin: ' . $this->name, 'manage_options', 'nimble-portfolio-skin-setting-' . $this->name, array($this, 'adminConfigPage'));
+        }
+
+        function adminConfigPage() {
+            include ( $this->path . 'config.php');
         }
 
     }
