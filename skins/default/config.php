@@ -10,7 +10,7 @@ if (@$_POST['nimble-portfolio-skin-submit']) {
     $skin_default['skin-type'] = @$_POST['skin-type'];
     $skin_default['column-type'] = @$_POST['column-type'];
     $skin_default['hover-icon'] = @$_POST['hover-icon'];
-    $skin->setOptions($skin_default);
+    $this->setOptions($skin_default);
 }
 
 $readmore_flag = $skin_default['readmore-flag'];
