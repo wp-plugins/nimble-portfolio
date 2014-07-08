@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -26,13 +26,11 @@ This free plugin can transform a humble wordpress website into a feature rich me
 = Version 2 Released =
 
 Whats New in Version 2
-
 - More of a  Framework than a Plugin
      1. Developer/Designers can make additional Add-ons to extend features such as:
         * Skins
         * Lightbox galleries (like Swipebox, Fancybox)
         * Sorting/Filtering libraries (like Isotope).
-
 - Default Skin Features
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
@@ -68,7 +66,9 @@ http://nimble3.com/demo/nimble-portfolio-free/
 
 = Add-ons =
 
-Coming Soon!
+* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
+* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
+* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
 = Upgrade Notice =
 
@@ -117,6 +117,13 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 08 Jul 2014 =
+
+2.0.5<br /><br />
+Better handling of template paths, better support for add-ons, modify WP action and WP filters parameters to provide more data for better support
+More robust and optimized way of generating Filters and Items attributes in default skin
+Fixed crop flag while generating thumbnail
 
 = 25 Jun 2014 =
 

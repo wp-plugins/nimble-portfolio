@@ -22,7 +22,8 @@ if (class_exists('NimblePortfolioSkin') && !class_exists('NimblePortfolioSkinDef
             wp_enqueue_style('genericons-css', $this->url . "/genericon/genericons.css");
         }
 
-        function skin_filters_classes($classes, $name) {
+        function skin_filters_classes($classes, $portfolioObj) {
+            $name = $portfolioObj->skinObj->name;
             $options = $this->getOptions();
             $skin_cols = $options['column-type'];
             $skin_type = $options['skin-type'];

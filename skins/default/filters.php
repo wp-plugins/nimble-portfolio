@@ -1,7 +1,13 @@
 <?php
 $filters = $this->getFilters();
 foreach ($filters as $filter) {
+    $filter_atts = array();
+    $filter_atts['href'] = get_term_link($filter->slug, $this->taxonomy);
+    $filter_atts['rel'] = $filter->slug;
+    $filter_atts['class'] = array("-filter");
+    $filter_atts['id'] = "filter-" . $filter->term_id;
+    $filter_atts = apply_filters('nimble_portfolio_filter_atts', $filter_atts, $filter);
     ?>
-    <a href="<?php echo apply_filters('nimble_portfolio_filter_href', get_term_link($filter->slug, $this->taxonomy), $filter); ?>" rel="<?php echo apply_filters('nimble_portfolio_filter_rel', $filter->slug, $filter); ?>" class="-filter <?php echo apply_filters('nimble_portfolio_filter_class', "", $filter); ?>" id='<?php echo apply_filters('nimble_portfolio_filter_id', "filter-" . $filter->term_id, $filter); ?>' <?php do_action('nimble_portfolio_filter_atts', $filter); ?>><?php echo apply_filters('nimble_portfolio_filter_name', $filter->name, $filter); ?></a>
+    <a <?php echo NimblePortfolioPlugin::phpvar2htmlatt($filter_atts); ?>><?php echo apply_filters('nimble_portfolio_filter_name', $filter->name, $filter); ?></a>
     <?php
 }

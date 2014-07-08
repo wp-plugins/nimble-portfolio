@@ -10,12 +10,16 @@ $skin_cols = $skin_options['column-type'];
 $hover_icon = $skin_options['hover-icon'] ? $skin_options['hover-icon'] : 'zoom';
 $items = $this->getItems();
 foreach ($items as $item) {
-    $post_id = $item->ID;
+    $item_atts = array();
+    $item_atts['class'] = $item->getFilters($this->taxonomy);
+    $item_atts['class'][] = "-item";
+    $item_atts['id'] = "item-" . $item->ID;
+    $item_atts = apply_filters('nimble_portfolio_item_atts', $item_atts, $item);
     ?>
-    <div class="-item <?php echo $item->getFilters($this->taxonomy, 'S'); ?>">
+    <div <?php echo NimblePortfolioPlugin::phpvar2htmlatt($item_atts); ?>>
         <div class="title"><?php echo $item->getTitle(); ?></div>    
         <div class="itembox">
-            <a href="<?php echo $item->getData('nimble-portfolio'); ?>" rel="<?php echo apply_filters('nimble_portfolio_lightbox_galleryname', 'nimblebox[nimble_portfolio_gal_default]'); ?>" <?php do_action('nimble_portfolio_lightbox_link_atts', $item); ?> title="<?php echo $item->getTitle(); ?>">
+            <a href="<?php echo esc_url($item->getData('nimble-portfolio')); ?>" rel="<?php echo apply_filters('nimble_portfolio_lightbox_galleryname', 'nimblebox[nimble_portfolio_gal_default]', $item); ?>" <?php do_action('nimble_portfolio_lightbox_link_atts', $item); ?> title="<?php echo esc_attr($item->getTitle()); ?>">
                 <img src="<?php echo $item->getThumbnail('480x480', true); ?>" />
                 <div class="-mask"> </div>
                 <div class="genericon genericon-<?php echo $hover_icon; ?>"></div>

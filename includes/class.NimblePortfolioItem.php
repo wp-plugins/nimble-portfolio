@@ -27,7 +27,7 @@ if (!class_exists('NimblePortfolioItem')) {
         function getData($field) {
             $custom_field = get_post_meta($this->id, $field, true);
 
-            $custom_field = apply_filters('nimble_portfolio_get_field', $custom_field);
+            $custom_field = apply_filters('nimble_portfolio_get_field', $custom_field, $field);
 
             return $custom_field;
         }
@@ -67,7 +67,7 @@ if (!class_exists('NimblePortfolioItem')) {
             }
         }
 
-        function getAttachmentSrc($attachment_id, $size_name = 'thumbnail') {
+        function getAttachmentSrc($attachment_id, $size_name = 'thumbnail', $crop = true) {
 
             global $_wp_additional_image_sizes;
             $size_name = trim($size_name);
@@ -81,11 +81,10 @@ if (!class_exists('NimblePortfolioItem')) {
                     $width = (int) $_wp_additional_image_sizes[$size_name]['width'];
                     $crop = (bool) $_wp_additional_image_sizes[$size_name]['crop'];
 
-                    // if not, see if name is of form [width]x[height] and use that to crop
+                // if not, see if name is of form [width]x[height] and use that to crop
                 } else if (preg_match('#^(\d+)x(\d+)$#', $size_name, $matches)) {
                     $height = (int) $matches[2];
                     $width = (int) $matches[1];
-                    $crop = true;
                 }
 
                 if (!empty($height) && !empty($width)) {
@@ -146,8 +145,8 @@ if (!class_exists('NimblePortfolioItem')) {
             return '';
         }
 
-        function getThumbnail($size_name, $flag = false) {
-            $src = $this->getAttachmentSrc(get_post_thumbnail_id($this->id), $size_name, $flag, '');
+        function getThumbnail($size_name, $crop = true) {
+            $src = $this->getAttachmentSrc(get_post_thumbnail_id($this->id), $size_name, $crop);
             return $src[0];
         }
 

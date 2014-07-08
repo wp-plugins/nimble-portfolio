@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.0.4
+  Version: 2.0.5
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -26,7 +26,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
         static private $dirUrl;
 
         static function init($params = array()) {
-            self::$version = '2.0.4';
+            self::$version = '2.0.5';
             self::$postType = 'portfolio';
             self::$postTypeSlug = apply_filters('nimble_portfolio_posttype_slug', 'portfolio');
             self::$taxonomy = 'nimble-portfolio-type';
@@ -60,6 +60,8 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
             add_action('wp_ajax_nimble_portfolio_tinymce', array(__CLASS__, 'ajaxTinymceShortcodeParams'));
             add_action('wp_ajax_nimble_portfolio_tinymce_skin_change', array(__CLASS__, 'ajaxTinymceSkinChange'));
+            
+            do_action('nimble_portfolio_init');
         }
 
         function path2url($path) {
@@ -67,6 +69,16 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 return false;
             }
             return trim(site_url(), '/\\') . "/" . str_replace("\\", "/", trim(substr_replace($path, '', 0, strlen(ABSPATH)), '/'));
+        }
+
+        function phpvar2htmlatt($atts) {
+            $return = ' ';
+            if (is_array($atts) && count($atts)) {
+                foreach ($atts as $att => $val) {
+                    $return .= $att . '="' . (is_array($val) ? implode(" ", $val) : $val) . '" ';
+                }
+            }
+            return $return;
         }
 
         function getVersion() {
@@ -181,7 +193,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
                     'editor',
                     'excerpt',
                 ),
-                'menu_position' => 25,
+                'menu_position' => 23,
                 'menu_icon' => self::$dirUrl . '/includes/icon.png',
                 'taxonomies' => array(self::$taxonomy)
             );
@@ -317,13 +329,13 @@ if (!class_exists('NimblePortfolioPlugin')) {
             ?>
             <div class="nimble-portfolio-meta-section">
                 <div class="form-wrap">
-                        <div class="form-field">
-                            <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context') ?></label>
-                            <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo esc_attr($item->getData('nimble-portfolio')); ?>" style="width:70%;" />
-                            <a id="nimble_portfolio_media_lib" href="javascript:void(0);" class="button" rel="nimble_portfolio"><?php _e('URL from Media Library', 'nimble_portfolio_context') ?></a>
-                            <p><?php _e('Enter URL for the full-size image or video (youtube, vimeo, swf, quicktime) you want to display in the lightbox gallery. You can also choose Image URL from your Media gallery', 'nimble_portfolio_context') ?></p>
-                        </div>            
-                        <div class="form-field">
+                    <div class="form-field">
+                        <label for="nimble_portfolio"><?php _e('Image/Video URL', 'nimble_portfolio_context') ?></label>
+                        <input type="text" id="nimble_portfolio" name="nimble_portfolio" value="<?php echo esc_attr($item->getData('nimble-portfolio')); ?>" style="width:70%;" />
+                        <a id="nimble_portfolio_media_lib" href="javascript:void(0);" class="button" rel="nimble_portfolio"><?php _e('URL from Media Library', 'nimble_portfolio_context') ?></a>
+                        <p><?php _e('Enter URL for the full-size image or video (youtube, vimeo, swf, quicktime) you want to display in the lightbox gallery. You can also choose Image URL from your Media gallery', 'nimble_portfolio_context') ?></p>
+                    </div>            
+                    <div class="form-field">
                         <label for="nimble_portfolio_url"><?php _e('Portfolio URL', 'nimble_portfolio_context') ?></label>
                         <input type="text" name="nimble_portfolio_url" value="<?php echo esc_attr($item->getData('nimble-portfolio-url')); ?>" />
                         <p><?php _e('Enter URL to the live version of the project.', 'nimble_portfolio_context') ?></p>
