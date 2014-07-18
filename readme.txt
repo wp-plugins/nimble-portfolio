@@ -27,14 +27,14 @@ This free plugin can transform a humble wordpress website into a feature rich me
 
 Whats New in Version 2
 * More of a  Framework than a Plugin
-1. Developer/Designers can make additional Add-ons to extend features such as:
-* Skins
-* Lightbox galleries (like Swipebox, Fancybox)
-* Sorting/Filtering libraries (like Isotope).
+    1. Developer/Designers can make additional Add-ons to extend features such as:
+        * Skins
+        * Lightbox galleries (like Swipebox, Fancybox)
+        * Sorting/Filtering libraries (like Isotope).
 * Default Skin Features
-1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-2. 3 additional Skin Styles Included (Normal, Round and Square).
-3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+    1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
+    2. 3 additional Skin Styles Included (Normal, Round and Square).
+    3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
 = Quick User Guide =
 
