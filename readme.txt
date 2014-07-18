@@ -25,16 +25,18 @@ This free plugin can transform a humble wordpress website into a feature rich me
 
 = Version 2 Released =
 
-Whats New in Version 2
-* More of a  Framework than a Plugin
-1. Developer/Designers can make additional Add-ons to extend features such as:
-* Skins
-* Lightbox galleries (like Swipebox, Fancybox)
-* Sorting/Filtering libraries (like Isotope).
-* Default Skin Features
-1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-2. 3 additional Skin Styles Included (Normal, Round and Square).
-3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+What's New in Version 2
+----------------------
+- More of a  Framework than a Plugin
+     1. Developer/Designers can make additional Add-ons to extend features such as:
+        * Skins
+        * Lightbox galleries (like Swipebox, Fancybox)
+        * Sorting/Filtering libraries (like IsoTope).
+
+- Default Skin Features
+     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
+     2. 3 additional Skin Styles Included (Normal, Round and Square).
+     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
 = Quick User Guide =
 
@@ -109,9 +111,9 @@ What's New in Version 2
 ----------------------
 - More of a  Framework than a Plugin
      1. Developer/Designers can make additional Add-ons to extend features such as:
-        a. Skins
-        b. Lightbox galleries (like Swipebox, Fancybox)
-        c. Sorting/Filtering libraries (like IsoTope).
+        * Skins
+        * Lightbox galleries (like Swipebox, Fancybox)
+        * Sorting/Filtering libraries (like IsoTope).
 
 - Default Skin Features
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
@@ -121,30 +123,35 @@ What's New in Version 2
 = 08 Jul 2014 =
 
 2.0.5
-Better handling of template paths, better support for add-ons, modify WP action and WP filters parameters to provide more data for better support
-More robust and optimized way of generating Filters and Items attributes in default skin
-Fixed crop flag while generating thumbnail
+
+1. Better handling of template paths, better support for add-ons, modify WP action and WP filters parameters to provide more data for better support
+2. More robust and optimized way of generating Filters and Items attributes in default skin
+3. Fixed crop flag while generating thumbnail
 
 = 25 Jun 2014 =
 
 2.0.4
-Error when updating Skin options - Fatal error: Call to a member function setOptions() on a non-object
+
+* Error when updating Skin options - Fatal error: Call to a member function setOptions() on a non-object
 
 = 24 Jun 2014 =
 
 2.0.3
+
 1. Replaced Skin menu registration procedure so the plugin will run on PHP version prior to 5.3.0
 2. site_url() used instead of get_bloginfo('url'); function to take care of sub-directory installation
 
 = 18 Jun 2014 =
 
 2.0.2
-Extended tinymce shortcode javascript, added custom jquery events to help add-ons
+
+* Extended tinymce shortcode javascript, added custom jquery events to help add-ons
 
 = 17 Jun 2014 =
 
 2.0.1
-FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wordpress.org/support/topic/too-few-arguments-classnimbleportfoliophp))
+
+* FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wordpress.org/support/topic/too-few-arguments-classnimbleportfoliophp))
 
 = 16 Jun 2014 =
 
@@ -153,11 +160,13 @@ FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wo
 = 09 Sep 2013 =
 
 1.3.2
-rect-1 template CSS fix
+
+* rect-1 template CSS fix
 
 = 09 Sep 2013 =
 
 1.3.1
+
 1. PDF support for lightbox gallery.
 2. New Template variation for Round template. template code: 'round-2' 
 3. New Template variation for Rectangular template. template code: 'rect-2' 
@@ -179,17 +188,20 @@ rect-1 template CSS fix
 = 05 Mar 2013 =
 
 1.2.4
+
 1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)
 2. Fixed - After filter, gallery showing all images
 
 = 04 Mar 2013 =
 
 1.2.3
+
 1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)
 
 = 05 Feb 2013 =
 
 1.2.2
+
 1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)
 2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)
 3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)
@@ -197,18 +209,21 @@ rect-1 template CSS fix
 = 12 Oct 2012 =
 
 1.2.1
+
 1. A small bug that was printing the shortcode out, instead of replacing the shortcode.
 2. Function to use in php code i.e. `nimble_portfolio_show()`.
 
 = 31 Aug 2012 =
 
 1.2.0
+
 1. A small bug that was hiding the item types.
 2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.
 
 = 25 Aug 2012 = 
 
 1.1.0
+
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.
 2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.
 
