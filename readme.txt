@@ -26,23 +26,23 @@ This free plugin can transform a humble wordpress website into a feature rich me
 = Version 2 Released =
 
 Whats New in Version 2
-- More of a  Framework than a Plugin
-     1. Developer/Designers can make additional Add-ons to extend features such as:
-        * Skins
-        * Lightbox galleries (like Swipebox, Fancybox)
-        * Sorting/Filtering libraries (like Isotope).
-- Default Skin Features
-     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-     2. 3 additional Skin Styles Included (Normal, Round and Square).
-     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+* More of a  Framework than a Plugin
+1. Developer/Designers can make additional Add-ons to extend features such as:
+* Skins
+* Lightbox galleries (like Swipebox, Fancybox)
+* Sorting/Filtering libraries (like Isotope).
+* Default Skin Features
+1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
+2. 3 additional Skin Styles Included (Normal, Round and Square).
+3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
 = Quick User Guide =
 
-1) Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.<br />
-2) Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.<br />
-3) Upload and set featured image from the far right bottom box.<br />
-4) Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.<br />
-5) Specify a live URL for your project in the input field `Portfolio URL`.<br />
+1. Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.
+2. Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
+3. Upload and set featured image from the far right bottom box.
+4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
+5. Specify a live URL for your project in the input field `Portfolio URL`.
 
 = Step by Step User Guide =
 
@@ -120,30 +120,30 @@ What's New in Version 2
 
 = 08 Jul 2014 =
 
-2.0.5<br /><br />
+2.0.5
 Better handling of template paths, better support for add-ons, modify WP action and WP filters parameters to provide more data for better support
 More robust and optimized way of generating Filters and Items attributes in default skin
 Fixed crop flag while generating thumbnail
 
 = 25 Jun 2014 =
 
-2.0.4<br /><br />
+2.0.4
 Error when updating Skin options - Fatal error: Call to a member function setOptions() on a non-object
 
 = 24 Jun 2014 =
 
-2.0.3<br /><br />
+2.0.3
 1. Replaced Skin menu registration procedure so the plugin will run on PHP version prior to 5.3.0
 2. site_url() used instead of get_bloginfo('url'); function to take care of sub-directory installation
 
 = 18 Jun 2014 =
 
-2.0.2<br /><br />
+2.0.2
 Extended tinymce shortcode javascript, added custom jquery events to help add-ons
 
 = 17 Jun 2014 =
 
-2.0.1<br /><br />
+2.0.1
 FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wordpress.org/support/topic/too-few-arguments-classnimbleportfoliophp))
 
 = 16 Jun 2014 =
@@ -152,70 +152,70 @@ FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wo
 
 = 09 Sep 2013 =
 
-1.3.2<br /><br />
+1.3.2
 rect-1 template CSS fix
 
 = 09 Sep 2013 =
 
-1.3.1<br /><br />
-1. PDF support for lightbox gallery.<br />
-2. New Template variation for Round template. template code: 'round-2' <br />
-3. New Template variation for Rectangular template. template code: 'rect-2' <br />
+1.3.1
+1. PDF support for lightbox gallery.
+2. New Template variation for Round template. template code: 'round-2' 
+3. New Template variation for Rectangular template. template code: 'rect-2' 
 
 = 05 Aug 2013 =
 
-1.3.0<br /><br />
-1. New Template. template code: 'round-1' <br />
-2. New Template. template code: 'rect-1' <br />
-3. Better thumbnail generation.<br />
-4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.<br />
-5. Taxonomy slug changed to 'portfolio-type'<br />
+1.3.0
+1. New Template. template code: 'round-1' 
+2. New Template. template code: 'rect-1' 
+3. Better thumbnail generation.
+4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.
+5. Taxonomy slug changed to 'portfolio-type'
 
 = 06 May 2013 =
 
-1.2.5<br /><br />
-1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.<br />
+1.2.5
+1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.
 
 = 05 Mar 2013 =
 
-1.2.4<br /><br />
-1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)<br />
-2. Fixed - After filter, gallery showing all images<br />
+1.2.4
+1. Fixed - Warning: Illegal string offset 'template' issue (http://wordpress.org/support/topic/issues-5)
+2. Fixed - After filter, gallery showing all images
 
 = 04 Mar 2013 =
 
-1.2.3<br /><br />
-1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)<br />
+1.2.3
+1. Fixed - Error on above thumbnails on page (http://wordpress.org/support/topic/error-on-above-thumbnails-on-page)
 
 = 05 Feb 2013 =
 
-1.2.2<br /><br />
-1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)<br />
-2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)<br />
-3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)<br />
+1.2.2
+1. Fixed - Jetpack compatibility issue (http://wordpress.org/support/topic/jetpack-compatibility-issue)
+2. Fixed - Two menu items for 'Item Type' (http://wordpress.org/support/topic/plugin-nimble-portfolio-observation-on-install)
+3. Fixed - No "Nimble Portfolio" tab on Dashboard/Admin Menu (http://wordpress.org/support/topic/no-nimble-tab-on-dashboard)
 
 = 12 Oct 2012 =
 
-1.2.1<br /><br />
-1. A small bug that was printing the shortcode out, instead of replacing the shortcode.<br />
-2. Function to use in php code i.e. `nimble_portfolio_show()`.<br />
+1.2.1
+1. A small bug that was printing the shortcode out, instead of replacing the shortcode.
+2. Function to use in php code i.e. `nimble_portfolio_show()`.
 
 = 31 Aug 2012 =
 
-1.2.0<br /><br />
-1. A small bug that was hiding the item types.<br />
-2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.<br />
+1.2.0
+1. A small bug that was hiding the item types.
+2. A lot of people were asking for PrettyPhoto so now plugin uses PrettyPhoto instead of fancybox for gallery.
 
 = 25 Aug 2012 = 
 
-1.1.0<br /><br />
-1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.<br />
-2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.<br />
+1.1.0
+1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.
+2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.
 
 
 = 29 Jun 2012 =
 
-1.0.0 – First release<br />
+1.0.0 – First release
 
 == Upgrade Notice ==
 
