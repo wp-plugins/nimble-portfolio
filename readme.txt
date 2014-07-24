@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 2.0.5
+Stable tag: 2.0.6
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -38,6 +38,12 @@ What's New in Version 2
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
+= Note for Premium version (1.4.0) users =
+
+Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2013 is eligible to upgrade to version 2.0.0.
+
+[Purchase Premium Version 2.0.0](http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/)
+
 = Quick User Guide =
 
 1. Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.
@@ -50,6 +56,17 @@ What's New in Version 2
 
 Coming Soon!
 
+= Demo =
+
+http://nimble3.com/demo/nimble-portfolio-free/
+
+= Add-ons =
+
+* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
+* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
+* [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
+* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
+
 = Shortcode =
 
 `[nimble-portfolio]` 
@@ -61,16 +78,6 @@ Coming Soon!
 `echo nimble_portfolio()` 
 or
 `nimble_portfolio_show()`
-
-= Demo =
-
-http://nimble3.com/demo/nimble-portfolio-free/
-
-= Add-ons =
-
-* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
-* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
-* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
 = Upgrade Notice =
 
@@ -119,6 +126,12 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 24 Jul 2014 =
+
+2.0.6
+
+* If Portfolio URL is not defined, its link wont be shown.
 
 = 08 Jul 2014 =
 
@@ -225,7 +238,7 @@ What's New in Version 2
 1.1.0
 
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.
-2. Another bug that stopped sorting of portfolio category names that contained special charcters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.
+2. Another bug that stopped sorting of portfolio category names that contained special characters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.
 
 
 = 29 Jun 2012 =

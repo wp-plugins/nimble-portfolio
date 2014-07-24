@@ -28,13 +28,13 @@ foreach ($items as $item) {
         <?php if ($readmore_flag || $viewproject_flag) { ?> 
             <div class="-links">
                 <?php if ($readmore_flag) { ?>
-                    <div class="-link -readmore <?php echo $viewproject_flag ? '' : '-onlyonelink'; ?>">
+                    <div class="-link -readmore <?php echo $viewproject_flag && $item->getData('nimble-portfolio-url') ? '' : '-onlyonelink'; ?>">
                         <a href="<?php echo $item->getPermalink(); ?>" class="button-fixed">
                             <?php _e($readmore_text, 'nimble_portfolio_context') ?>
                         </a>
                     </div>
                 <?php } ?>
-                <?php if ($viewproject_flag) { ?>
+                <?php if ($viewproject_flag && $item->getData('nimble-portfolio-url')) { ?>
                     <div class="-link -viewproject <?php echo $readmore_flag ? '' : '-onlyonelink'; ?>"> 
                         <a href="<?php echo $item->getData('nimble-portfolio-url'); ?>" class="button-fixed">
                             <?php _e($viewproject_text, 'nimble_portfolio_context') ?>
