@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -126,6 +126,12 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 11 Aug 2014 =
+
+2.0.7
+
+* Sort Order field for Filters added.
 
 = 24 Jul 2014 =
 

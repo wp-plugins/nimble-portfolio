@@ -14,7 +14,7 @@ foreach ($items as $item) {
     $item_atts['class'] = $item->getFilters($this->taxonomy);
     $item_atts['class'][] = "-item";
     $item_atts['id'] = "item-" . $item->ID;
-    $item_atts = apply_filters('nimble_portfolio_item_atts', $item_atts, $item);
+    $item_atts = apply_filters('nimble_portfolio_item_atts', $item_atts, $item, $this);
     ?>
     <div <?php echo NimblePortfolioPlugin::phpvar2htmlatt($item_atts); ?>>
         <div class="title"><?php echo $item->getTitle(); ?></div>    

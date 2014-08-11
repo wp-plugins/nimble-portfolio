@@ -31,4 +31,10 @@
         file_frame.open();
     });
 
+    // Quick edit box of Filter
+    $("#the-list").on('click', 'a.editinline', function() {
+        var tag_id = $(this).parents('tr').attr('id');
+        var sort_order = $('.sort-order', '#' + tag_id).text();
+        $(':input[name="sort-order"]', '.inline-edit-row').val(sort_order);
+    });
 })(jQuery);

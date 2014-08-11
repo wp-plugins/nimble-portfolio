@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.0.6
+  Version: 2.0.7
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -52,6 +52,14 @@ if (!class_exists('NimblePortfolioPlugin')) {
             add_filter('manage_' . self::$postType . '_posts_columns', array(__CLASS__, 'adminPostsColumns'));
             add_action('manage_' . self::$postType . '_posts_custom_column', array(__CLASS__, 'adminPostsCustomColumn'));
 
+            // Custom Fields for Taxonomy
+            add_action(self::$taxonomy . '_edit_form_fields', array(__CLASS__, 'taxonomyEditFormField'));
+            add_action(self::$taxonomy . '_add_form_fields', array(__CLASS__, 'taxonomyAddFormField'));
+            add_action('edited_' . self::$taxonomy, array(__CLASS__, 'saveTaxonomyValue'));
+            add_action('create_' . self::$taxonomy, array(__CLASS__, 'saveTaxonomyValue'));
+            add_action('manage_edit-' . self::$taxonomy . '_columns', array(__CLASS__, 'taxonomyColumnHeader'));
+            add_action('manage_' . self::$taxonomy . '_custom_column', array(__CLASS__, 'taxonomyCustomValue'), 10, 3);
+            add_action('quick_edit_custom_box', array(__CLASS__, 'taxonomyQuickEditField'), 10, 3);
 
             // Admin Handlers
             add_action('admin_head', array(__CLASS__, 'adminHead'));
@@ -60,7 +68,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
             add_action('wp_ajax_nimble_portfolio_tinymce', array(__CLASS__, 'ajaxTinymceShortcodeParams'));
             add_action('wp_ajax_nimble_portfolio_tinymce_skin_change', array(__CLASS__, 'ajaxTinymceSkinChange'));
-            
+
             do_action('nimble_portfolio_init');
         }
 
@@ -383,6 +391,80 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
         function setOptions($options = array()) {
             update_option('nimble-portfolio-config', $options);
+        }
+
+        function getTaxonomyMeta($term_id, $key) {
+            if (!$term_id || !$key) {
+                return null;
+            }
+            $options = self::getOptions();
+            return $options['taxonomymeta'][$term_id][$key];
+        }
+
+        function updateTaxonomyMeta($term_id, $key, $val = null) {
+            if (!$term_id || !$key) {
+                return;
+            }
+            $options = self::getOptions();
+            $options['taxonomymeta'][$term_id][$key] = $val;
+            self::setOptions($options);
+        }
+
+        function taxonomyColumnHeader($columns) {
+            $columns["sort-order"] = __("Sort Order", "nimble_portfolio_context");
+            ;
+            return $columns;
+        }
+
+        function taxonomyEditFormField() {
+            ?>
+            <tr class="form-field">
+                <th valign="top" scope="row">
+                    <label for="sort-order"><?php _e("Sort Order", "nimble_portfolio_context"); ?></label>
+                </th>
+                <td>
+                    <input type="text" id="sort-order" name="sort-order" value="<?php echo self::getTaxonomyMeta($_GET["tag_ID"], 'sort-order'); ?>" style="width: 100px"/>
+                    <p class="description"><?php _e('Set the sort order for your category here with 0 being the first and so on.', 'nimble_portfolio_context'); ?></p>
+                </td>
+            </tr>
+            <?php
+        }
+
+        function taxonomyAddFormField() {
+            ?>
+            <div class="form-field">
+                <label for="sort-order"><?php _e("Sort Order", "nimble_portfolio_context"); ?></label>
+                <input type="text" id="sort-order" name="sort-order" style="width: 100px"/>
+                <p><?php _e('Set the sort order for your category here with 0 being the first and so on.', 'nimble_portfolio_context'); ?></p>
+            </div>        
+            <?php
+        }
+
+        function saveTaxonomyValue($term_id) {
+            if (isset($_POST['sort-order']))
+                self::updateTaxonomyMeta($term_id, 'sort-order', $_POST['sort-order']);
+        }
+
+        function taxonomyCustomValue($empty, $custom_column, $term_id) {
+
+            if ($custom_column == 'sort-order') {
+                return self::getTaxonomyMeta($term_id, $custom_column);
+            }
+        }
+
+        function taxonomyQuickEditField($column_name, $screen, $name = null) {
+            if ($column_name == 'sort-order') {
+                ?>  
+                <fieldset>  
+                    <div id="my-custom-content" class="inline-edit-col">  
+                        <label>  
+                            <span class="title"><?php _e("Sort Order", "nimble_portfolio_context"); ?></span>  
+                            <span class="input-text-wrap"><input name="<?php echo $column_name; ?>" class="ptitle" value="" type="text"></span>  
+                        </label>  
+                    </div>  
+                </fieldset>  
+                <?php
+            }
         }
 
     }

@@ -126,7 +126,21 @@ if (!class_exists('NimblePortfolio')) {
         function getFilters($args = array()) {
 
             $args['taxonomy'] = $this->taxonomy;
-            $filters = get_categories($args);
+            $_filters = get_categories($args);
+
+            $term_sort_orders = array();
+            $_terms = array();
+            foreach ($_filters as $_filter) {
+                $_terms[$_filter->slug] = $_filter;
+                $term_sort_orders[$_filter->slug] = NimblePortfolioPlugin::getTaxonomyMeta($_filter->term_id, 'sort-order');
+            }
+
+            asort($term_sort_orders, SORT_NUMERIC);
+
+            $filters = array();
+            foreach ($term_sort_orders as $slug => $order) {
+                $filters[] = $_terms[$slug];
+            }
 
             return $filters;
         }
