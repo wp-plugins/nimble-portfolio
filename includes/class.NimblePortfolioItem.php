@@ -6,6 +6,7 @@ if (!class_exists('NimblePortfolioItem')) {
 
         private $post;
         private $id;
+        private $params;
 
         public function __construct($id = null, $params = array()) {
 
@@ -14,6 +15,7 @@ if (!class_exists('NimblePortfolioItem')) {
             }
             $this->id = $id;
             $this->post = get_post($id);
+            $this->params = $params;
         }
 
         public function __get($name) {
@@ -24,6 +26,14 @@ if (!class_exists('NimblePortfolioItem')) {
             return;
         }
 
+        public function getParam($param){
+            return isset($this->params[$param]) ? $this->params[$param] : null;
+        }
+        
+        public function setParam($param, $value){
+            $this->params[$param] = $value;
+        }
+        
         function getData($field) {
             $custom_field = get_post_meta($this->id, $field, true);
 
@@ -73,7 +83,7 @@ if (!class_exists('NimblePortfolioItem')) {
             $size_name = trim($size_name);
             $meta = wp_get_attachment_metadata($attachment_id);
 
-            if (empty($meta['sizes']) || empty($meta['sizes'][$size_name])) {
+            if ($this->getParam('force-nothumbcache') || empty($meta['sizes']) || empty($meta['sizes'][$size_name])) {
 
                 // let's first see if this is a registered size
                 if (isset($_wp_additional_image_sizes[$size_name])) {
@@ -81,7 +91,7 @@ if (!class_exists('NimblePortfolioItem')) {
                     $width = (int) $_wp_additional_image_sizes[$size_name]['width'];
                     $crop = (bool) $_wp_additional_image_sizes[$size_name]['crop'];
 
-                // if not, see if name is of form [width]x[height] and use that to crop
+                    // if not, see if name is of form [width]x[height] and use that to crop
                 } else if (preg_match('#^(\d+)x(\d+)$#', $size_name, $matches)) {
                     $height = (int) $matches[2];
                     $width = (int) $matches[1];
@@ -127,10 +137,14 @@ if (!class_exists('NimblePortfolioItem')) {
                     !is_wp_error($resized_path) &&
                     !is_array($resized_path)
             ) {
+                
+                if ($this->getParam('force-exactthumbsize')) {
+                    $this->makeExactSize($resized_path, $width, $height);
+                }
                 return $resized_path;
-
-                // perhaps this image already exists.  If so, return it.
+                
             } else {
+                
                 $orig_info = pathinfo($original_path);
                 $suffix = "{$width}x{$height}";
                 $dir = $orig_info['dirname'];
@@ -138,8 +152,21 @@ if (!class_exists('NimblePortfolioItem')) {
                 $name = basename($original_path, ".{$ext}");
                 $destfilename = "{$dir}/{$name}-{$suffix}.{$ext}";
                 if (file_exists($destfilename)) {
+                    
+                    if ($this->getParam('force-exactthumbsize')) {
+                        $this->makeExactSize($destfilename, $width, $height);
+                    }
                     return $destfilename;
+                    
+                } elseif (copy($original_path, $destfilename)) {
+                    
+                    if ($this->getParam('force-exactthumbsize')) {
+                        $this->makeExactSize($destfilename, $width, $height);
+                    }
+                    return $destfilename;
+                    
                 }
+                
             }
 
             return '';
@@ -168,6 +195,42 @@ if (!class_exists('NimblePortfolioItem')) {
             }
 
             return $filters;
+        }
+
+        function makeExactSize($filename, $output_w, $output_h) {
+
+            if (!$output_w || !$output_h || $output_w != $output_h) {
+                return;
+            }
+
+            list($orig_w, $orig_h) = getimagesize($filename);
+
+            $orig_img = imagecreatefromstring(file_get_contents($filename));
+
+            // determine scale based on the longest edge
+            if ($orig_h > $orig_w) {
+                $scale = $output_h / $orig_h;
+            } else {
+                $scale = $output_w / $orig_w;
+            }
+
+            // calc new image dimensions
+            $new_w = $orig_w * $scale;
+            $new_h = $orig_h * $scale;
+
+            // determine offset coords so that new image is centered
+            $offest_x = ($output_w - $new_w) / 2;
+            $offest_y = ($output_h - $new_h) / 2;
+
+            // create new image and fill with background colour
+            $new_img = imagecreatetruecolor($output_w, $output_h);
+            $bgcolor = imagecolorallocate($new_img, 255, 255, 255);
+            imagefill($new_img, 0, 0, $bgcolor); // fill background colour
+            // copy and resize original image into center of new image
+            imagecopyresampled($new_img, $orig_img, $offest_x, $offest_y, 0, 0, $new_w, $new_h, $orig_w, $orig_h);
+
+            //save it
+            imagejpeg($new_img, $filename, 90);
         }
 
     }

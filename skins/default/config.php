@@ -2,7 +2,6 @@
 $skin_default = $this->getOptions();
 
 if (@$_POST['nimble-portfolio-skin-submit']) {
-
     $skin_default['readmore-flag'] = (int) @$_POST['readmore-flag'];
     $skin_default['readmore-text'] = @$_POST['readmore-text'];
     $skin_default['viewproject-flag'] = (int) @$_POST['viewproject-flag'];
@@ -10,6 +9,8 @@ if (@$_POST['nimble-portfolio-skin-submit']) {
     $skin_default['skin-type'] = @$_POST['skin-type'];
     $skin_default['column-type'] = @$_POST['column-type'];
     $skin_default['hover-icon'] = @$_POST['hover-icon'];
+    $skin_default['force-nothumbcache'] = (bool) @$_POST['force-nothumbcache'];
+    $skin_default['force-exactthumbsize'] = (bool) @$_POST['force-exactthumbsize'];
     $this->setOptions($skin_default);
 }
 
@@ -20,6 +21,8 @@ $viewproject_text = $skin_default['viewproject-text'];
 $skin_type = $skin_default['skin-type'];
 $skin_cols = $skin_default['column-type'];
 $hover_icon = $skin_default['hover-icon'];
+$force_nothumbcache = $skin_default['force-nothumbcache'] ? $skin_default['force-nothumbcache'] : false;
+$force_exactthumbsize = $skin_default['force-exactthumbsize'] ? $skin_default['force-exactthumbsize'] : false;
 
 $columns = array(
     '-columns2' => '2 Columns',
@@ -112,6 +115,35 @@ $columns = array(
                     </p>
                 </div>
             </div>
+
+            <div class="admin-section">
+                <label><?php _e('Force No Cache for Thumbnails', 'nimble_portfolio') ?></label>
+                <div class="nimble-radio">
+                    <p>
+                        <input type="radio" value="1" name="force-nothumbcache" id="force-nothumbcache-yes" <?php checked($force_nothumbcache, true); ?> />
+                        <label for="force-nothumbcache-yes" class="radio-button">YES</label>
+                    </p>
+                    <p>
+                        <input type="radio" value="0"  name="force-nothumbcache" id="force-nothumbcache-no" <?php checked($force_nothumbcache, false); ?> />
+                        <label for="force-nothumbcache-no" class="radio-button">NO</label>
+                    </p>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <label><?php _e('Force Exact Thumbnail Size Generation', 'nimble_portfolio') ?></label>
+                <div class="nimble-radio">
+                    <p>
+                        <input type="radio" value="1" name="force-exactthumbsize" id="force-exactthumbsize-yes" <?php checked($force_exactthumbsize, true); ?> />
+                        <label for="force-exactthumbsize-yes" class="radio-button">YES</label>
+                    </p>
+                    <p>
+                        <input type="radio" value="0" name="force-exactthumbsize" id="force-exactthumbsize-no" <?php checked($force_exactthumbsize, false); ?> />
+                        <label for="force-exactthumbsize-no" class="radio-button">NO</label>
+                    </p>
+                </div>
+            </div>
+
 
             <div class="admin-section">
                 <label><?php _e('Choose hover Icon', 'nimble_portfolio') ?></label>

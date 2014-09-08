@@ -49,14 +49,18 @@ $skins = apply_filters('nimble_portfolio_skin_register', array());
             jQuery(document).ready(function($) {
                 $('#nimble_portfolio_tinymce_skin').change(function() {
                     var skin = $(this).val();
+					var _this = $(this);
+					$("#nimble_portfolio_tinymce_skin_ajax_response").html('<img src="<?php echo admin_url('images/loading.gif'); ?>" />');
+					$(this).attr('disabled','disabled');
                     $.get(ajaxurl,
                             {
                                 'action': 'nimble_portfolio_tinymce_skin_change',
                                 'skin': skin
                             },
                     function(response) {
-                        $('#nimble_portfolio_tinymce_skin_ajax_response').html(response);
-                    })
+                    $('#nimble_portfolio_tinymce_skin_ajax_response').html(response);
+					_this.removeAttr('disabled');	
+					})
                 });
             });
         </script>
@@ -71,8 +75,7 @@ $skins = apply_filters('nimble_portfolio_skin_register', array());
                 <?php } ?>
             </select>
         </p>
-        <p id="nimble_portfolio_tinymce_skin_ajax_response">
-        </p>
+        <p id="nimble_portfolio_tinymce_skin_ajax_response"> </p>
         <p>
             <label for="nimble_portfolio_tinymce_hide_filters"><?php _e("Hide Filters"); ?>:</label>
             <input type="checkbox" id="nimble_portfolio_tinymce_hide_filters" name="nimble_portfolio_tinymce_hide_filters" value="1" />

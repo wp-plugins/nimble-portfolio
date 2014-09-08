@@ -8,18 +8,27 @@ $viewproject_text = $skin_options['viewproject-text'];
 $skin_type = $skin_options['skin-type'];
 $skin_cols = $skin_options['column-type'];
 $hover_icon = $skin_options['hover-icon'] ? $skin_options['hover-icon'] : 'zoom';
+$force_nothumbcache = $skin_options['force-nothumbcache'] ? $skin_options['force-nothumbcache'] : false;
+$force_exactthumbsize = $skin_options['force-exactthumbsize'] ? $skin_options['force-exactthumbsize'] : false;
 $items = $this->getItems();
 foreach ($items as $item) {
+    $item->setParam('force-nothumbcache', $force_nothumbcache);
+    $item->setParam('force-exactthumbsize', $force_exactthumbsize);
     $item_atts = array();
     $item_atts['class'] = $item->getFilters($this->taxonomy);
     $item_atts['class'][] = "-item";
     $item_atts['id'] = "item-" . $item->ID;
     $item_atts = apply_filters('nimble_portfolio_item_atts', $item_atts, $item, $this);
+    $item_link = array();
+    $item_link['href'] = $item->getData('nimble-portfolio') ? esc_url($item->getData('nimble-portfolio')) : $item->getThumbnail('full');
+    $item_link['rel'] = apply_filters('nimble_portfolio_lightbox_galleryname', 'nimblebox[nimble_portfolio_gal_default]', $item);
+    $item_link['title'] = esc_attr($item->getTitle());
+    $item_link = apply_filters('nimble_portfolio_lightbox_link_atts', $item_link, $item, $this);
     ?>
     <div <?php echo NimblePortfolioPlugin::phpvar2htmlatt($item_atts); ?>>
         <div class="title"><?php echo $item->getTitle(); ?></div>    
         <div class="itembox">
-            <a href="<?php echo esc_url($item->getData('nimble-portfolio')); ?>" rel="<?php echo apply_filters('nimble_portfolio_lightbox_galleryname', 'nimblebox[nimble_portfolio_gal_default]', $item); ?>" <?php do_action('nimble_portfolio_lightbox_link_atts', $item); ?> title="<?php echo esc_attr($item->getTitle()); ?>">
+            <a <?php echo NimblePortfolioPlugin::phpvar2htmlatt($item_link); ?>>
                 <img src="<?php echo $item->getThumbnail('480x480', true); ?>" />
                 <div class="-mask"> </div>
                 <div class="genericon genericon-<?php echo $hover_icon; ?>"></div>

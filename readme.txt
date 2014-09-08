@@ -2,9 +2,9 @@
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
-Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 2.0.7
+Requires at least: 3.5.1
+Tested up to: 4.0
+Stable tag: 2.0.8
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -20,29 +20,20 @@ This free plugin can transform a humble wordpress website into a feature rich me
 2. Youtube, Vimeo, Quicktime video support.
 3. Built-in PrettyPhoto gallery for picture, video and <strong>PDF</strong> preview.
 4. Easy categorization and sort/filter feature.
-5. Configurable default skin, with 3 Responsive designs. (Version 2)
-6. Widget enabled. (Version 2)
+5. Widget enabled. (Version 2)
+6. Configurable default skin (Version 2)
+     - Fully Responsive for Desktop, Tablet and Mobile.
+     - 3 Thumbnail Styles to choose from (Normal, Round and Square).
+     - Fully customized (via admin configurations) to set Columns, Show/Hide Links.
 
-= Version 2 Released =
+= Premium Add-ons =
 
-What's New in Version 2
-----------------------
-- More of a  Framework than a Plugin
-     1. Developer/Designers can make additional Add-ons to extend features such as:
-        * Skins
-        * Lightbox galleries (like Swipebox, Fancybox)
-        * Sorting/Filtering libraries (like IsoTope).
+Premium add-ons for Nimble Portfolio also available with enhanced features.
 
-- Default Skin Features
-     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-     2. 3 additional Skin Styles Included (Normal, Round and Square).
-     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
-
-= Note for Premium version (1.4.0) users =
-
-Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2013 is eligible to upgrade to version 2.0.0.
-
-[Purchase Premium Version 2.0.0](http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/)
+* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
+* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
+* [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
+* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
 = Quick User Guide =
 
@@ -52,32 +43,29 @@ Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2
 4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
 5. Specify a live URL for your project in the input field `Portfolio URL`.
 
-= Step by Step User Guide =
+= Detailed User Guide =
 
-Coming Soon!
+http://docs.nimble3.com/nimble-portfolio.php
 
 = Demo =
 
 http://nimble3.com/demo/nimble-portfolio-free/
 
-= Add-ons =
-
-* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
-* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
-* [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
-* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
-
 = Shortcode =
 
 `[nimble-portfolio]` 
 
-<em>TinyMCE editor button ([screenshot](http://s.w.org/plugins/nimble-portfolio/screenshot-1.jpg)) is providing convenience to insert shortcode of our plugin on page editor.</em>
+<em>TinyMCE editor button ([screenshot](http://s.w.org/plugins/nimble-portfolio/screenshot-1.jpg)) is provided for convenience to generate and insert shortcode of our plugin on page editor.</em>
 
 = PHP Code =
 
 `echo nimble_portfolio()` 
 or
 `nimble_portfolio_show()`
+
+= Note for Premium version (1.4.0) users =
+
+Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2013 is eligible to upgrade to version 2.0.0.
 
 = Upgrade Notice =
 
@@ -87,17 +75,15 @@ When upgrading from version 1 to version 2, your current plugin skin (template) 
 
 = Minimum Requirements =
 
-* WordPress 3.5 onwards
+* WordPress 3.5.1 onwards
 * PHP 5.3 onwards
 * MySQL 5.0 onwards
 
-No extra ordinary step to install this plugin, use following generic plugin installation guide
-
-http://codex.wordpress.org/Managing_Plugins#Installing_Plugins
+Use this link for installation instructions: http://docs.nimble3.com/nimble-portfolio.php#install
 
 == Frequently Asked Questions ==
 
-Please use Support tab OR use this link http://wordpress.org/support/plugin/nimble-portfolio
+Please use Support tab OR use this link http://docs.nimble3.com/nimble-portfolio-faq.php
 
 == Screenshots ==
 
@@ -116,7 +102,7 @@ When upgrading from version 1 to version 2, your current plugin skin (template) 
 
 What's New in Version 2
 ----------------------
-- More of a  Framework than a Plugin
+- More of a Framework than a Plugin
      1. Developer/Designers can make additional Add-ons to extend features such as:
         * Skins
         * Lightbox galleries (like Swipebox, Fancybox)
@@ -126,6 +112,13 @@ What's New in Version 2
      1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 9 Sep 2014 =
+
+2.0.8
+
+* Images smaller then thumbnail size were not cropping the thumbnail to exact size. Option added in default skin settings to add extra white space to exact thumbnail resize.
+* `Featured Image` is used as fallback to `Image/Video URL` field.
 
 = 11 Aug 2014 =
 

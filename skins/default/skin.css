@@ -79,6 +79,14 @@
     border-bottom-right-radius: 50%;
 }
 
+.-skin-default .-items .-item .itembox > a {
+    display: block;
+}
+
+.-skin-default .-items .-item .itembox > a > img{
+    width: 100%;
+}
+
 .-skin-default .-items .-item .itembox:hover .-mask,
 .-skin-default .-items .-item .itembox:hover .genericon {
     display: block;
@@ -94,6 +102,9 @@
     top: 0;
     width: 100%;
     text-decoration: none;
+}
+.-skin-defaultplus .-items .-item .itembox .genericon:before {
+    font-size: 48px;
 }
 .-skin-default .-items .-item .itembox .genericon {
     color: #FFFFFF;
