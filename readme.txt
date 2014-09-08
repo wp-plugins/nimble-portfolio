@@ -1,28 +1,43 @@
-=== Filterable jQuery Portfolio/Gallery ===
-Contributors: nimble3,mamirulamin,mubeenkhan
+=== Wordpress Picture / Portfolio / Media Gallery ===
+Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: portfolio, gallery, media gallery, filterable portfolio, jquery portfolio, sortable portfolio, portfolio pagination, template based portfolio, quick sand, quicksand, CSS3 transformation, multiple portfolios, portfolio templates, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, multiple prettyphoto galleries, multiple lightbox galleries
-Requires at least: 3.3
-Tested up to: 3.8
-Stable tag: 1.3.2
+Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
+Requires at least: 3.5.1
+Tested up to: 4.0
+Stable tag: 2.0.8
 License: GPLv2 or later
 
-A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/images/videos/documents and group them nicely under filterable tabs.
+A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
 == Description ==
 
 <h3>Nimble Portfolio</h3>
-Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
+
+This free plugin can transform a humble wordpress website into a feature rich media gallery where you can proudly showcase your projects, client logos, photography, or any other pictures or videos of your choice. You can group the contents of your media gallery using the built-in jQuery sort filters and display them on any theme of your choice. It comes with built-in PrettyPhoto lighbox but can also be customized easily by using other add-ons. This plugin is also responsive which means it would work perfectly on desktop, tablet and mobile screen sizes.  If you read through our documentation we have provided step by step instructions to use the various features and functionality of this plugin.
 
 = Plugin Features =
 
 1. Custom post types for portfolio items.
 2. Youtube, Vimeo, Quicktime video support.
-3. Built-in PrettyPhoto gallery for image, video and <strong>PDF</strong> preview.
-4. Easy categorization and jQuery sort feature.
+3. Built-in PrettyPhoto gallery for picture, video and <strong>PDF</strong> preview.
+4. Easy categorization and sort/filter feature.
+5. Widget enabled. (Version 2)
+6. Configurable default skin (Version 2)
+     - Fully Responsive for Desktop, Tablet and Mobile.
+     - 3 Thumbnail Styles to choose from (Normal, Round and Square).
+     - Fully customized (via admin configurations) to set Columns, Show/Hide Links.
+
+= Premium Add-ons =
+
+Premium add-ons for Nimble Portfolio also available with enhanced features.
+
+* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
+* [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
+* [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
+* [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
 = Quick User Guide =
 
-1. Add portfolio item types under `Nimble Portfolio -> Item Type`, such as web, mobile, graphics e.t.c.
+1. Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.
 2. Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
 3. Upload and set featured image from the far right bottom box.
 4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
@@ -30,30 +45,17 @@ Using this free plugin you can transform your portfolio in to a cutting edge jQu
 
 = Detailed User Guide =
 
-Please download here http://www.nimble3.com/wp-content/uploads/2013/09/Nimble-Portfolio-Plugin-User-Guide.pdf
+http://docs.nimble3.com/nimble-portfolio.php
+
+= Demo =
+
+http://nimble3.com/demo/nimble-portfolio-free/
 
 = Shortcode =
 
-Our free plugin comes with short code support and by default it uses the 3 column round template, so the following two short codes will entail the same result.
 `[nimble-portfolio]` 
-and 
-`[nimble-portfolio template="3colround"]`
 
-You can see from the above shortcode that the later part of the code refers to the use of template.
-
-<strong>Additional Templates</strong>
-
-Fluid columns - round template - variation 1
-`[nimble-portfolio template="round-1"]`
-
-Fluid columns - square template - variation 1
-`[nimble-portfolio template="rect-1"]`
-
-Fluid columns - round template - variation 2
-`[nimble-portfolio template="round-2"]`
-
-Fluid columns - square template - variation 2
-`[nimble-portfolio template="rect-2"]`
+<em>TinyMCE editor button ([screenshot](http://s.w.org/plugins/nimble-portfolio/screenshot-1.jpg)) is provided for convenience to generate and insert shortcode of our plugin on page editor.</em>
 
 = PHP Code =
 
@@ -61,72 +63,131 @@ Fluid columns - square template - variation 2
 or
 `nimble_portfolio_show()`
 
-= Demo =
+= Note for Premium version (1.4.0) users =
 
-Free: http://nimble3.com/demo/nimble-portfolio-free/
-
-Premium: http://www.nimble3.com/portfolio-demo/
-
-= Sample Import file for Portfolio Items =
-
-http://nimble3.com/demo/nimble-portfolio-free/portfolio-items.xml
-
-= Premium Version =
-
-With Premium features such as:
-
-1. Category Order Sorting.
-2. Advanced Item Order Sorting (on date, title, sort order number, randomize e.t.c.)
-3. Display Selected Types and Manage Multiple Portfolios.
-4. Shortcode Generator.
-5. Pagination Support for Large Portfolios.
-6. Configurable Separate Gallery for each Item.
-7. Making use of Quick Sand Plugin and Configurable CSS3 Transformation.
-8. More templates. (including Responsive template for responsive themes)
-
-To learn more please visit http://www.nimble3.com/shop/premium-nimble-portfolio-plugin/
+Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2013 is eligible to upgrade to version 2.0.0.
 
 = Upgrade Notice =
 
-When you upgrade, the following problems may arise.
-
-1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.
+When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
 
 == Installation ==
 
-Use this guide http://www.nimble3.com/wp-content/uploads/2013/09/Nimble-Portfolio-Plugin-User-Guide.pdf for detailed Installation instructions.
+= Minimum Requirements =
+
+* WordPress 3.5.1 onwards
+* PHP 5.3 onwards
+* MySQL 5.0 onwards
+
+Use this link for installation instructions: http://docs.nimble3.com/nimble-portfolio.php#install
 
 == Frequently Asked Questions ==
 
-Please use Support tab OR use this link http://wordpress.org/support/plugin/nimble-portfolio
+Please use Support tab OR use this link http://docs.nimble3.com/nimble-portfolio-faq.php
 
 == Screenshots ==
 
-1. Nimble Portfolio backend
-2. Nimble Portfolio frontend
+1. Nimble Portfolio - TinyMCE button for shortcode generation
+2. Nimble Portfolio - Widget
+3. Nimble Portfolio - Options meta box on Add New Item page
+4. Nimble Portfolio - Items listing
+5. Nimble Portfolio - Frontend Display
+6. Nimble Portfolio - Picture in lightbox
+7. Nimble Portfolio - Video in lightbox
+8. Nimble Portfolio - Default Skin options
 
 == Changelog ==
+
+When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
+
+What's New in Version 2
+----------------------
+- More of a Framework than a Plugin
+     1. Developer/Designers can make additional Add-ons to extend features such as:
+        * Skins
+        * Lightbox galleries (like Swipebox, Fancybox)
+        * Sorting/Filtering libraries (like IsoTope).
+
+- Default Skin Features
+     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
+     2. 3 additional Skin Styles Included (Normal, Round and Square).
+     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+
+= 9 Sep 2014 =
+
+2.0.8
+
+* Images smaller then thumbnail size were not cropping the thumbnail to exact size. Option added in default skin settings to add extra white space to exact thumbnail resize.
+* `Featured Image` is used as fallback to `Image/Video URL` field.
+
+= 11 Aug 2014 =
+
+2.0.7
+
+* Sort Order field for Filters added.
+
+= 24 Jul 2014 =
+
+2.0.6
+
+* If Portfolio URL is not defined, its link wont be shown.
+
+= 08 Jul 2014 =
+
+2.0.5
+
+1. Better handling of template paths, better support for add-ons, modify WP action and WP filters parameters to provide more data for better support
+2. More robust and optimized way of generating Filters and Items attributes in default skin
+3. Fixed crop flag while generating thumbnail
+
+= 25 Jun 2014 =
+
+2.0.4
+
+* Error when updating Skin options - Fatal error: Call to a member function setOptions() on a non-object
+
+= 24 Jun 2014 =
+
+2.0.3
+
+1. Replaced Skin menu registration procedure so the plugin will run on PHP version prior to 5.3.0
+2. site_url() used instead of get_bloginfo('url'); function to take care of sub-directory installation
+
+= 18 Jun 2014 =
+
+2.0.2
+
+* Extended tinymce shortcode javascript, added custom jquery events to help add-ons
+
+= 17 Jun 2014 =
+
+2.0.1
+
+* FIXED: Too few arguments in class.NimblePortfolio.php bug ([reference](http://wordpress.org/support/topic/too-few-arguments-classnimbleportfoliophp))
+
+= 16 Jun 2014 =
+
+"Version 2.0.0 Released!"
 
 = 09 Sep 2013 =
 
 1.3.2
 
-rect-1 template CSS fix
+* rect-1 template CSS fix
 
 = 09 Sep 2013 =
 
 1.3.1
 
 1. PDF support for lightbox gallery.
-2. New Template variation for Round template. template code: 'round-2'
-3. New Template variation for Rectangular template. template code: 'rect-2'
+2. New Template variation for Round template. template code: 'round-2' 
+3. New Template variation for Rectangular template. template code: 'rect-2' 
 
 = 05 Aug 2013 =
 
 1.3.0
-
-1. New Template. template code: 'round-1'
-2. New Template. template code: 'rect-1'
+1. New Template. template code: 'round-1' 
+2. New Template. template code: 'rect-1' 
 3. Better thumbnail generation.
 4. flush_rewrite_rules() on plugin activation to take care of 404 error on single portfolio post.
 5. Taxonomy slug changed to 'portfolio-type'
@@ -134,7 +195,6 @@ rect-1 template CSS fix
 = 06 May 2013 =
 
 1.2.5
-
 1. Added `URL from Media Library` button to select full size Image URL much easier from your site's Media Library.
 
 = 05 Mar 2013 =
@@ -179,12 +239,13 @@ rect-1 template CSS fix
 1. A small bug that did not allow selection of featured images from library files has now been fixed. You can select from the images available in your library for portfolio items.
 2. Another bug that stopped sorting of portfolio category names that contained special characters has been resolved. Now category names with special characters can be sorted. This is useful if you want to create a price-range sort feature using $ or £ etc in your category names.
 
+
 = 29 Jun 2012 =
 
 1.0.0 – First release
 
 == Upgrade Notice ==
 
-When you upgrade, the following problems may arise.
+= Version 2 released =
 
-1. If you have customized the template using the previous version, then your template may be lost. Therefore, take out a backup of your template files that you can re-deploy after upgrade.
+When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
