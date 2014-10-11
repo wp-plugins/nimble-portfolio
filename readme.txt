@@ -1,7 +1,7 @@
 === Wordpress Picture / Portfolio / Media Gallery ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design
+Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design, isotope, fancybox, magnific popup, swipebox, ihover
 Requires at least: 3.5.1
 Tested up to: 4.0
 Stable tag: 2.0.8
@@ -30,8 +30,11 @@ This free plugin can transform a humble wordpress website into a feature rich me
 
 Premium add-ons for Nimble Portfolio also available with enhanced features.
 
-* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
 * [Isotope Premium Add-on](http://www.nimble3.com/shop/premium-isotope-addon-for-nimble-portfolio/)
+* [iHover Premium Skin](http://www.nimble3.com/shop/ihover-addon-for-nimble-portfolio/)
+* [Default+ Premium Skin](http://www.nimble3.com/shop/premium-defaultplus-skin-for-nimble-portfolio/)
+* [Magnific Pop Premium Add-on](http://www.nimble3.com/shop/magnific-popup-addon-for-nimble-portfolio/)
+* [Fancybox Premium Add-on](http://www.nimble3.com/shop/fancybox-addon-for-nimble-portfolio/)
 * [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
 * [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
@@ -43,13 +46,9 @@ Premium add-ons for Nimble Portfolio also available with enhanced features.
 4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
 5. Specify a live URL for your project in the input field `Portfolio URL`.
 
-= Detailed User Guide =
+= Demo & Documentation =
 
-http://docs.nimble3.com/nimble-portfolio.php
-
-= Demo =
-
-http://nimble3.com/demo/nimble-portfolio-free/
+http://demo.nimble3.com/demo/nimble-portfolio/
 
 = Shortcode =
 
@@ -65,7 +64,7 @@ or
 
 = Note for Premium version (1.4.0) users =
 
-Premium version is upgraded to 2.0.0, any premium plugin purchase from 1st Sep 2013 is eligible to upgrade to version 2.0.0.
+Premium version is upgraded to 2.0.0, any premium plugin purchase from 10 Oct 2013 is eligible to upgrade to version 2.0.0.
 
 = Upgrade Notice =
 
