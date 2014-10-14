@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design, isotope, fancybox, magnific popup, swipebox, ihover
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
