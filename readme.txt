@@ -112,6 +112,12 @@ What's New in Version 2
      2. 3 additional Skin Styles Included (Normal, Round and Square).
      3. Default Skin can be fully customized to set Columns, Show/Hide Links.
 
+= 15 Oct 2014 =
+
+2.0.9
+
+* FIXED: `Notice: Undefined index: nimble_portfolio_noncename in ....../wp-content/plugins/nimble-portfolio/nimble-portfolio.php on line 126` issue
+
 = 9 Sep 2014 =
 
 2.0.8
