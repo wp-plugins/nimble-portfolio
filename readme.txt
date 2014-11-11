@@ -48,7 +48,7 @@ Premium add-ons for Nimble Portfolio also available with enhanced features.
 
 = Demo & Documentation =
 
-http://demo.nimble3.com/demo/nimble-portfolio/
+http://demo.nimble3.com/nimble-portfolio/
 
 = Shortcode =
 
@@ -78,11 +78,11 @@ When upgrading from version 1 to version 2, your current plugin skin (template) 
 * PHP 5.3 onwards
 * MySQL 5.0 onwards
 
-Use this link for installation instructions: http://docs.nimble3.com/nimble-portfolio.php#install
+Use this link for installation instructions: http://demo.nimble3.com/nimble-portfolio/documentation
 
 == Frequently Asked Questions ==
 
-Please use Support tab OR use this link http://docs.nimble3.com/nimble-portfolio-faq.php
+Please use Support tab OR use this link http://demo.nimble3.com/nimble-portfolio/faq
 
 == Screenshots ==
 
