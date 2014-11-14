@@ -3,6 +3,7 @@ if (!class_exists('NimblePortfolio')) {
 
     class NimblePortfolio {
 
+        private $ID;
         private $atts;
         private $skin;
         private $skinObj;
@@ -15,23 +16,26 @@ if (!class_exists('NimblePortfolio')) {
         function __construct($atts = array(), $params = array()) {
             $atts['skin'] = isset($atts['skin']) && $atts['skin'] ? $atts['skin'] : 'default';
             $atts['hide_filters'] = isset($atts['hide_filters']) && $atts['hide_filters'] ? 1 : 0;
+            $atts['orderby'] = isset($atts['orderby']) && $atts['orderby'] ? $atts['orderby'] : 'menu_order';
+            $atts['order'] = isset($atts['order']) && $atts['order'] ? $atts['order'] : 'ASC';
+            $this->ID = isset($atts['id']) && $atts['id'] ? $atts['id'] : uniqid("np-");
             $this->items = null;
             $this->atts = $atts;
             $this->skin = $atts['skin'];
             $this->skinObj = apply_filters("nimble_portfolio_skin_get_$this->skin", null);
 
             // set Post Type
-            if (isset($params['postType']) && $params['postType']) {
-                $this->postType = $params['postType'];
+            if (isset($params['post_type']) && $params['post_type']) {
+                $this->postType = $params['post_type'];
             } else {
-                $this->postType = NimblePortfolioPlugin::getPostType();
+                $this->postType = isset($atts['post_type']) && $atts['post_type'] ? $atts['post_type'] : NimblePortfolioPlugin::getPostType();
             }
 
             //set Taxonomy
             if (isset($params['taxonomy']) && $params['taxonomy']) {
                 $this->taxonomy = $params['taxonomy'];
             } else {
-                $this->taxonomy = NimblePortfolioPlugin::getTaxonomy();
+                $this->taxonomy = isset($atts['taxonomy']) ? $atts['taxonomy'] : NimblePortfolioPlugin::getTaxonomy();
             }
 
             // construct WP_Query
@@ -40,9 +44,13 @@ if (!class_exists('NimblePortfolio')) {
             $args['post_type'] = $this->postType;
             $args['posts_per_page'] = -1;
             $args['fields'] = 'ids';
-            $args['orderby'] = 'menu_order';
-            $args['order'] = 'ASC';
+            $args['orderby'] = $atts['orderby'];
+            $args['order'] = $atts['order'];
             $args['post_status'] = 'publish';
+            
+            if (isset($atts['showposts']) && $atts['showposts']){
+                $args['showposts'] = $atts['showposts'];
+            }
 
             $args = apply_filters('nimble_portfolio_query_args', $args, $this);
 
@@ -63,46 +71,34 @@ if (!class_exists('NimblePortfolio')) {
             return;
         }
 
-        function getTemplatePath($filepath = "") {
-            if (file_exists(get_template_directory() . "/nimble-portfolio/skins/$this->skin/$filepath")) {
-                return get_template_directory() . "/nimble-portfolio/skins/$this->skin/$filepath";
-            }
-            return $this->skinObj->path . "/$filepath";
-        }
-
-        function getTemplateUrl($filepath = "") {
-            if (file_exists(get_template_directory() . "/nimble-portfolio/skins/$this->skin/$filepath")) {
-                return get_template_directory_uri() . "/nimble-portfolio/skins/$this->skin/$filepath";
-            }
-            return $this->skinObj->url . "/$filepath";
-        }
-
         function renderTemplate() {
+            do_action('nimble-portfolio-template-css', $this);
             ?>
-            <link rel="stylesheet" type="text/css" href="<?php echo $this->getTemplateUrl("skin.css"); ?>" />
-            <?php do_action('nimble-portfolio-template-css', $this); ?>
-
-            <div class="nimble-portfolio <?php echo apply_filters("nimble_portfolio_skin_classes", "-skin-$this->skin", $this); ?>">
+            <div class="nimble-portfolio <?php echo apply_filters("nimble_portfolio_skin_classes", "-skin-$this->skin", $this); ?>" id="<?php echo $this->ID; ?>">
 
                 <?php do_action('nimble_portfolio_skin_before', $this); ?>
 
                 <?php if (!$this->atts['hide_filters']) { ?>
                     <div class="-filters <?php echo apply_filters("nimble_portfolio_skin_filters_classes", "", $this); ?>">
-                        <?php echo apply_filters('nimble_portfolio_filter_all', sprintf('<a href="#" rel="*" class="-filter active">%s</a>', __("All"))); ?>
-                        <?php require ($this->getTemplatePath("filters.php")); ?>
+                        <?php echo apply_filters('nimble_portfolio_filter_all', sprintf('<a href="#" rel="*" class="-filter active">%s</a>', __("All", "nimble_portfolio"))); ?>
+                        <?php $this->renderTemplateFile("filters.php"); ?>
                     </div>        
                 <?php } ?>
 
                 <?php do_action('nimble_portfolio_skin_between', $this); ?>
 
                 <div class="-items <?php echo apply_filters("nimble_portfolio_skin_items_classes", "", $this); ?>">
-                    <?php require ($this->getTemplatePath("items.php")); ?>
+                    <?php $this->renderTemplateFile("items.php"); ?>
                 </div>
 
                 <?php do_action('nimble_portfolio_skin_after', $this); ?>
 
             </div>        
             <?php
+        }
+
+        function renderTemplateFile($file) {
+            require ($this->skinObj->getTemplatePath($file));
         }
 
         function getItems($flag_idonly = false) {
@@ -124,6 +120,10 @@ if (!class_exists('NimblePortfolio')) {
         }
 
         function getFilters($args = array()) {
+
+            if (!$this->taxonomy) {
+                return array();
+            }
 
             $args['taxonomy'] = $this->taxonomy;
             $_filters = get_categories($args);

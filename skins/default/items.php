@@ -20,7 +20,7 @@ foreach ($items as $item) {
     $item_atts['id'] = "item-" . $item->ID;
     $item_atts = apply_filters('nimble_portfolio_item_atts', $item_atts, $item, $this);
     $item_link = array();
-    $item_link['href'] = $item->getData('nimble-portfolio') ? esc_url($item->getData('nimble-portfolio')) : $item->getThumbnail('full');
+    $item_link['href'] = esc_url($item->getData('nimble-portfolio'));
     $item_link['rel'] = apply_filters('nimble_portfolio_lightbox_galleryname', 'nimblebox[nimble_portfolio_gal_default]', $item);
     $item_link['title'] = esc_attr($item->getTitle());
     $item_link = apply_filters('nimble_portfolio_lightbox_link_atts', $item_link, $item, $this);

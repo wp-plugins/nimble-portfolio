@@ -21,6 +21,8 @@ if (!class_exists('NimblePortfolioSkin')) {
             add_filter('nimble_portfolio_skin_register', array($this, 'register'));
             add_filter('nimble_portfolio_skin_get_' . $this->name, array($this, 'get'));
             add_action('nimble_portfolio_create_section_before', array($this, 'registerMenu'));
+
+            add_action('nimble_portfolio_enqueue_style', array($this, 'enqueueStyle'));
         }
 
         public function __get($name) {
@@ -34,6 +36,20 @@ if (!class_exists('NimblePortfolioSkin')) {
         function register($skins) {
             $skins[] = $this;
             return $skins;
+        }
+
+        function getTemplatePath($filepath = "") {
+            if (file_exists(get_template_directory() . "/nimble-portfolio/skins/$this->name/$filepath")) {
+                return get_template_directory() . "/nimble-portfolio/skins/$this->name/$filepath";
+            }
+            return $this->path . "/$filepath";
+        }
+
+        function getTemplateUrl($filepath = "") {
+            if (file_exists(get_template_directory() . "/nimble-portfolio/skins/$this->name/$filepath")) {
+                return get_template_directory_uri() . "/nimble-portfolio/skins/$this->name/$filepath";
+            }
+            return $this->url . "/$filepath";
         }
 
         function getOptions() {
@@ -59,6 +75,10 @@ if (!class_exists('NimblePortfolioSkin')) {
 
         function adminConfigPage() {
             include ( $this->path . 'config.php');
+        }
+
+        function enqueueStyle() {
+            wp_enqueue_style("nimble-portfolio-$this->name-stylesheet", $this->getTemplateUrl("skin.css"));
         }
 
     }

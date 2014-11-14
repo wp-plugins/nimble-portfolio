@@ -1,10 +1,10 @@
 === Wordpress Picture / Portfolio / Media Gallery ===
 Contributors: nimble3,mamirulamin
 Donate link: http://www.nimble3.com
-Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design, isotope, fancybox, magnific popup, swipebox, ihover
+Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design, isotope, fancybox, magnific popup, swipebox, ihover, best portfolio plugin, best gallery plugin, best grid gallery, best portfolio grid
 Requires at least: 3.5.1
 Tested up to: 4.0
-Stable tag: 2.0.9
+Stable tag: 2.1.0
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -16,15 +16,33 @@ This free plugin can transform a humble wordpress website into a feature rich me
 
 = Plugin Features =
 
-1. Custom post types for portfolio items.
-2. Youtube, Vimeo, Quicktime video support.
+1. Support for all post types and taxonomies, like Posts, Woo commerce Products e.t.c. (from version 2.1.0)
+2. Custom post type for portfolio items.
 3. Built-in PrettyPhoto gallery for picture, video and <strong>PDF</strong> preview.
-4. Easy categorization and sort/filter feature.
-5. Widget enabled. (Version 2)
-6. Configurable default skin (Version 2)
+4. Youtube, Vimeo, Quicktime video support.
+5. Easy categorization and sort/filter feature.
+6. Shortcode Generator for easily generate and use shortcodes.
+7. Widget enabled. (Version 2)
+8. Configurable default skin (Version 2)
      - Fully Responsive for Desktop, Tablet and Mobile.
      - 3 Thumbnail Styles to choose from (Normal, Round and Square).
-     - Fully customized (via admin configurations) to set Columns, Show/Hide Links.
+     - Fully customized (via admin configurations) to set Columns, Show/Hide Links e.t.c.
+
+= Demos =
+
+For all the demos of Plugin and its Addons, please visit http://demo.nimble3.com/nimble-portfolio/
+
+= Quick User Guide =
+
+1. Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.
+2. Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
+3. Upload and set featured image from the far right bottom box.
+4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
+5. Specify a live URL for your project in the input field `Portfolio URL`.
+
+= Detailed Documentation =
+
+For latest detailed documentation please visit http://demo.nimble3.com/nimble-portfolio/documentation/
 
 = Premium Add-ons =
 
@@ -38,33 +56,9 @@ Premium add-ons for Nimble Portfolio also available with enhanced features.
 * [prettyPhoto Premium Add-on](http://www.nimble3.com/shop/premium-prettyphoto-addon-for-nimble-portfolio/)
 * [Swipebox Premium Add-on](http://www.nimble3.com/shop/premium-swipebox-addon-for-nimble-portfolio/)
 
-= Quick User Guide =
+= Note for Premium plugin (version 1.4.0) users =
 
-1. Add portfolio filter under `Nimble Portfolio -> Filters`, such as web, mobile, graphics e.t.c.
-2. Add new portfolio items using custom post type under `Nimble Portfolio -> Add Portfolio Item`. Add item title, description e.t.c.
-3. Upload and set featured image from the far right bottom box.
-4. Specify full-size Image URL or Video URL (youtube, vimeo) in the input field `Image/Video URL` on the left. You can also use `URL from Media Library` button to select the URL of full-size image from Media Library.
-5. Specify a live URL for your project in the input field `Portfolio URL`.
-
-= Demo & Documentation =
-
-http://demo.nimble3.com/nimble-portfolio/
-
-= Shortcode =
-
-`[nimble-portfolio]` 
-
-<em>TinyMCE editor button ([screenshot](http://s.w.org/plugins/nimble-portfolio/screenshot-1.jpg)) is provided for convenience to generate and insert shortcode of our plugin on page editor.</em>
-
-= PHP Code =
-
-`echo nimble_portfolio()` 
-or
-`nimble_portfolio_show()`
-
-= Note for Premium version (1.4.0) users =
-
-Premium version is upgraded to 2.0.0, any premium plugin purchase from 10 Oct 2013 is eligible to upgrade to version 2.0.0.
+Premium plugin is upgraded to version 2, any premium plugin purchase made in last 12 months is eligible to upgrade to version 2.
 
 = Upgrade Notice =
 
@@ -78,11 +72,11 @@ When upgrading from version 1 to version 2, your current plugin skin (template) 
 * PHP 5.3 onwards
 * MySQL 5.0 onwards
 
-Use this link for installation instructions: http://demo.nimble3.com/nimble-portfolio/documentation
+Use this link for installation instructions: http://demo.nimble3.com/nimble-portfolio/documentation/
 
 == Frequently Asked Questions ==
 
-Please use Support tab OR use this link http://demo.nimble3.com/nimble-portfolio/faq
+Please use Support tab OR use this link http://demo.nimble3.com/nimble-portfolio/faq/
 
 == Screenshots ==
 
@@ -97,20 +91,16 @@ Please use Support tab OR use this link http://demo.nimble3.com/nimble-portfolio
 
 == Changelog ==
 
-When upgrading from version 1 to version 2, your current plugin skin (template) will be replaced by new default skin, there is no going back to your old plugin skin. But who cares when your old fixed style skin is replaced by modern responsive design :)
+= 9 Nov 2014 =
 
-What's New in Version 2
-----------------------
-- More of a Framework than a Plugin
-     1. Developer/Designers can make additional Add-ons to extend features such as:
-        * Skins
-        * Lightbox galleries (like Swipebox, Fancybox)
-        * Sorting/Filtering libraries (like IsoTope).
+2.1.0 (Major Upgrade)
 
-- Default Skin Features
-     1. Fully Responsive Default Skin for Desktop, Tablet and Mobile.
-     2. 3 additional Skin Styles Included (Normal, Round and Square).
-     3. Default Skin can be fully customized to set Columns, Show/Hide Links.
+* Plugin now support all post types and taxonomies (both built-in and custom)
+* Shortcode Generator option in Dashboard menu (will replace TinyMCE editor shortcode button in the future)
+* Order and Orderby support added in shortcode
+* Nimble Portfolio widget replaced by Shortcode Widget (can be used for other shortcodes as well).
+* Recent Portfolio Items widget added
+* Previously `Featured Image` is used as fallback to `Image/Video URL` field in Default skin only, its now made generic.
 
 = 15 Oct 2014 =
 

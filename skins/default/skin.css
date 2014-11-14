@@ -81,6 +81,7 @@
 
 .-skin-default .-items .-item .itembox > a {
     display: block;
+    line-height:0;
 }
 
 .-skin-default .-items .-item .itembox > a > img{
@@ -169,4 +170,34 @@
 
 .-skin-default.-columns5 .-item .-links a {
     font-size: 11px;
+}
+
+.-skin-default-recent-items .-recent-item {
+    clear: both;
+    padding-top: 10px;
+}
+
+.-skin-default-recent-items a.-recent-item{
+    padding: 0.75em;
+    display: block;
+    margin: 0.3em 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgba(118,117,128,0.05);
+}
+
+.-skin-default-recent-items a.-recent-item img {
+    display: inline-block;
+    width: 50px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    box-shadow: 1px 1px 3px #888888;
+
+}
+
+.-skin-default-recent-items a.-recent-item img.-round-tmb {
+    border-radius: 50%;
+}
+.genericon:before {
+font-size: 100%;
 }

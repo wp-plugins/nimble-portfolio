@@ -26,20 +26,28 @@ if (!class_exists('NimblePortfolioItem')) {
             return;
         }
 
-        public function getParam($param){
+        public function getPostObject() {
+            return $this->post;
+        }
+
+        public function getParam($param) {
             return isset($this->params[$param]) ? $this->params[$param] : null;
         }
-        
-        public function setParam($param, $value){
+
+        public function setParam($param, $value) {
             $this->params[$param] = $value;
         }
-        
+
         function getData($field) {
-            $custom_field = get_post_meta($this->id, $field, true);
+            $value = get_post_meta($this->id, $field, true);
 
-            $custom_field = apply_filters('nimble_portfolio_get_field', $custom_field, $field);
+            if ($field == 'nimble-portfolio' && !$value) {
+                $value = $this->getThumbnail('full');
+            }
 
-            return $custom_field;
+            $value = apply_filters('nimble_portfolio_get_field', $value, $field, $this);
+
+            return $value;
         }
 
         public function getTitle() {
@@ -137,14 +145,13 @@ if (!class_exists('NimblePortfolioItem')) {
                     !is_wp_error($resized_path) &&
                     !is_array($resized_path)
             ) {
-                
+
                 if ($this->getParam('force-exactthumbsize')) {
                     $this->makeExactSize($resized_path, $width, $height);
                 }
                 return $resized_path;
-                
             } else {
-                
+
                 $orig_info = pathinfo($original_path);
                 $suffix = "{$width}x{$height}";
                 $dir = $orig_info['dirname'];
@@ -152,37 +159,49 @@ if (!class_exists('NimblePortfolioItem')) {
                 $name = basename($original_path, ".{$ext}");
                 $destfilename = "{$dir}/{$name}-{$suffix}.{$ext}";
                 if (file_exists($destfilename)) {
-                    
+
                     if ($this->getParam('force-exactthumbsize')) {
                         $this->makeExactSize($destfilename, $width, $height);
                     }
                     return $destfilename;
-                    
                 } elseif (copy($original_path, $destfilename)) {
-                    
+
                     if ($this->getParam('force-exactthumbsize')) {
                         $this->makeExactSize($destfilename, $width, $height);
                     }
                     return $destfilename;
-                    
                 }
-                
             }
 
             return '';
         }
 
         function getThumbnail($size_name, $crop = true) {
-            $src = $this->getAttachmentSrc(get_post_thumbnail_id($this->id), $size_name, $crop);
-            return $src[0];
+            if ($attachment_id = get_post_thumbnail_id($this->id)) {
+                $src = $this->getAttachmentSrc($attachment_id, $size_name, $crop);
+                return $src[0];
+            }
+            return '';
         }
 
-        function getFilters($taxonomy, $format = 'A') {
+        function getFilters($taxonomy, $format = 'A', $sep = ' ') {
+
+            if (!$taxonomy) {
+                return array();
+            }
 
             $_terms = wp_get_post_terms($this->id, $taxonomy);
 
             if ($format == 'R') {
                 return $_terms;
+            }
+
+            if ($format == 'N') {
+                $filters = array();
+                foreach ($_terms as $_term) {
+                    $filters[] = $_term->name;
+                }
+                return implode($sep, $filters);
             }
 
             $filters = array();
@@ -191,7 +210,7 @@ if (!class_exists('NimblePortfolioItem')) {
             }
 
             if ($format == 'S') {
-                return implode(" ", $filters);
+                return implode($sep, $filters);
             }
 
             return $filters;

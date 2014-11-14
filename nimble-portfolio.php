@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.0.9
+  Version: 2.1.0
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -12,6 +12,8 @@
 include("includes/class.NimblePortfolio.php");
 include("includes/class.NimblePortfolioItem.php");
 include("includes/class.NimblePortfolioSkin.php");
+include("includes/class.NimblePortfolioShortcodeWidget.php");
+include("includes/class.NimblePortfolioRecentItemsWidget.php");
 
 if (!class_exists('NimblePortfolioPlugin')) {
 
@@ -26,7 +28,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
         static private $dirUrl;
 
         static function init($params = array()) {
-            self::$version = '2.0.9';
+            self::$version = '2.1.0';
             self::$postType = 'portfolio';
             self::$postTypeSlug = apply_filters('nimble_portfolio_posttype_slug', 'portfolio');
             self::$taxonomy = 'nimble-portfolio-type';
@@ -68,6 +70,10 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
             add_action('wp_ajax_nimble_portfolio_tinymce', array(__CLASS__, 'ajaxTinymceShortcodeParams'));
             add_action('wp_ajax_nimble_portfolio_tinymce_skin_change', array(__CLASS__, 'ajaxTinymceSkinChange'));
+            add_action('wp_ajax_nimble_portfolio_tinymce_post_type_change', array(__CLASS__, 'ajaxTinymcePostTypeChange'));
+
+            add_action('wp_ajax_nimble_portfolio_shortcode_skin_change', array(__CLASS__, 'ajaxShortcodeGenSkinChange'));
+            add_action('wp_ajax_nimble_portfolio_shortcode_post_type_change', array(__CLASS__, 'ajaxShortcodeGenPostTypeChange'));
 
             do_action('nimble_portfolio_init');
         }
@@ -111,18 +117,16 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
         function getPath($tail) {
             $tail = trim($tail, '/');
-            return self::$dirPath . "/$tail/";
+            return self::$dirPath . ($tail ? "/$tail/" : "/");
         }
 
         function getUrl($tail) {
             $tail = trim($tail, '/');
-            return self::$dirUrl . "/$tail/";
+            return self::$dirUrl . ($tail ? "/$tail/" : "/");
         }
 
         function updateData($post_id, $post) {
 
-            // verify this came from the our screen and with proper authorization,
-            // because save_post can be triggered at other times
             if (!wp_verify_nonce(@$_POST['nimble_portfolio_noncename'], plugin_basename(__FILE__))) {
                 return;
             }
@@ -135,15 +139,12 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 return;
             }
 
-            // OK, we're authenticated: we need to find and save the data
-            // We'll put it into an array to make it easier to loop though.
             $mydata = array();
             $mydata['nimble-portfolio'] = $_POST['nimble_portfolio'];
             $mydata['nimble-portfolio-url'] = $_POST['nimble_portfolio_url'];
 
             $mydata = apply_filters('nimble_portfolio_update_data', $mydata);
 
-            // Add values of $mydata as custom fields
             foreach ($mydata as $key => $value) { //Let's cycle through the $mydata array!
                 update_post_meta($post->ID, $key, $value);
                 if (!$value)
@@ -156,7 +157,6 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 return $safe_text;
             }
 
-            // We are on the main menu item now. The filter is not needed anymore.
             remove_filter('attribute_escape', 'renameMenuTitle');
 
             return __('Nimble Portfolio', 'nimble_portfolio_context');
@@ -276,6 +276,63 @@ if (!class_exists('NimblePortfolioPlugin')) {
             exit;
         }
 
+        function ajaxTinymcePostTypeChange() {
+            $post_type = $_GET['post_type'];
+            $all_taxonomies = get_taxonomies(array('public' => true), 'names');
+            $taxonomies = get_object_taxonomies($post_type, 'objects');
+            if (count($taxonomies)) {
+                ?>
+                <label for="nimble_portfolio_tinymce_taxonomy"><?php _e("Filters Type (Taxonomy)", 'nimble_portfolio'); ?>:</label>
+                <select id="nimble_portfolio_tinymce_taxonomy" name="nimble_portfolio_tinymce_taxonomy">
+                    <?php
+                    foreach ($taxonomies as $taxonomy => $taxonomy_obj) {
+                        if (!in_array($taxonomy, $all_taxonomies)) {
+                            continue;
+                        }
+                        ?>
+                        <option value="<?php echo $taxonomy ?>"><?php echo "$taxonomy_obj->label ($taxonomy)"; ?></option>
+                    <?php } ?>
+                </select>
+                <?php
+            } else {
+                _e("No taxonomy found under <strong>$post_type</strong> post type.", "nimble_portfolio");
+            }
+            exit;
+        }
+
+        function ajaxShortcodeGenSkinChange() {
+            do_action('nimble_portfolio_shortcode_skin_change', $_GET['skin']);
+            exit;
+        }
+
+        function ajaxShortcodeGenPostTypeChange() {
+            $post_type = $_GET['post_type'];
+            $all_taxonomies = get_taxonomies(array('public' => true), 'names');
+            $taxonomies = get_object_taxonomies($post_type, 'objects');
+            $option_set = "";
+            if (count($taxonomies)) {
+                foreach ($taxonomies as $taxonomy => $taxonomy_obj) {
+                    if (!in_array($taxonomy, $all_taxonomies)) {
+                        continue;
+                    }
+                    $option_set .= "<option value='$taxonomy' " . selected($taxonomy, 'nimble-portfolio-type', false) . " >$taxonomy_obj->label ($taxonomy)</option>";
+                }
+            }
+            ?>
+            <label for="nimble_portfolio_shortcode_taxonomy"><?php _e("Filters Type (Taxonomy)", 'nimble_portfolio'); ?>:</label>
+            <select id="nimble_portfolio_shortcode_taxonomy" name="nimble_portfolio_shortcode_taxonomy" <?php disabled($option_set, ""); ?>>
+                <?php
+                if ($option_set) {
+                    echo $option_set;
+                } else {
+                    ?>
+                    <option value=""><?php _e("No Taxnomy Found under the Post Type!", "nimble_portfolio"); ?></option>
+                <?php } ?>
+            </select>
+            <?php
+            exit;
+        }
+
         function getPortfolio($atts) {
             ob_start();
             self::showPortfolio($atts);
@@ -327,9 +384,14 @@ if (!class_exists('NimblePortfolioPlugin')) {
         }
 
         function adminOptions() {
+            add_submenu_page('edit.php?post_type=' . self::$postType, 'Generate Shortcode', 'Generate Shortcode', 'manage_options', 'nimble-portfolio-skin-setting-portfolios', array(__CLASS__, 'shortcodeGeneratorPage'));
             do_action('nimble_portfolio_create_section_before', self::$postType);
             add_meta_box('nimble-portfolio-section-options', __('Options', 'nimble_portfolio_context'), array(__CLASS__, 'renderOptions'), self::$postType, 'normal', 'high');
             do_action('nimble_portfolio_create_section_after', self::$postType);
+        }
+
+        function shortcodeGeneratorPage() {
+            include("includes/shortcode-generator.php");
         }
 
         function renderOptions($post) {
@@ -412,7 +474,6 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
         function taxonomyColumnHeader($columns) {
             $columns["sort-order"] = __("Sort Order", "nimble_portfolio_context");
-            ;
             return $columns;
         }
 
@@ -465,53 +526,6 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 </fieldset>  
                 <?php
             }
-        }
-
-    }
-
-    add_action('widgets_init', create_function('', "register_widget('NimblePortfolioWidget');"));
-
-    class NimblePortfolioWidget extends WP_Widget {
-
-        function NimblePortfolioWidget() {
-            $widget_ops = array('classname' => 'nimble-portfolio-widget', 'description' => 'Portfolio/Gallery grid widget');
-            $control_ops = array('width' => 200, 'height' => 250, 'id_base' => 'nimble-portfolio-widget');
-            $this->WP_Widget('nimble-portfolio-widget', 'Nimble Portfolio', $widget_ops, $control_ops);
-        }
-
-        function widget($args, $instance) {
-
-            extract($args);
-
-            echo $before_widget;
-
-            NimblePortfolioPlugin::showPortfolio($instance);
-
-            echo $after_widget;
-        }
-
-        function update($new_instance, $old_instance) {
-            return $new_instance;
-        }
-
-        function form($instance) {
-
-
-            $skins = apply_filters('nimble_portfolio_skin_register', array());
-            ?>
-            <p>
-                <label for="<?php echo $this->get_field_id('skin'); ?>"><?php _e("Skin"); ?>:</label>
-                <select id="<?php echo $this->get_field_id('skin'); ?>" name="<?php echo $this->get_field_name('skin'); ?>" style="width:95%;">
-                    <?php foreach ($skins as $skin) { ?>
-                        <option value="<?php echo $skin->name ?>" <?php selected($skin->name, $instance['skin']); ?>><?php echo $skin->label ?></option>
-                    <?php } ?>
-                </select>
-            </p>
-            <p>
-                <label for="<?php echo $this->get_field_id('hide_filters'); ?>"><?php _e("Hide Filters"); ?>:</label>
-                <input type="checkbox" id="<?php echo $this->get_field_id('hide_filters'); ?>" name="<?php echo $this->get_field_name('hide_filters'); ?>" value="1" <?php checked(1, (int) $instance['hide_filters']); ?> />
-            </p>
-            <?php
         }
 
     }
