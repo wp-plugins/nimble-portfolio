@@ -1,0 +1,203 @@
+@import url("genericon/genericons.css");
+
+.-skin-default *, .-skin-default *:before, .-skin-default *:after {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.-skin-default .-filters .-filter {
+    display: inline-block;
+    padding: 3px 7px;
+    margin:2px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    outline: none;
+}
+
+.-skin-default .-filters .-filter.active {
+    background: #eee;
+}
+
+.-skin-default .-items {  
+    position: relative;
+}
+.-skin-default .-items .-item {
+    float:left;
+    width: 31.33%;
+    margin:1%;
+}
+
+.-skin-default .-items .-item.hidden {
+    display: none;
+    position: absolute;
+}
+
+@media screen and (max-width: 480px) {
+    .-skin-default.-columns2 .-items .-item,
+    .-skin-default.-columns3 .-items .-item,
+    .-skin-default.-columns4 .-items .-item,
+    .-skin-default.-columns5 .-items .-item,
+    .-skin-default .-items .-item {
+        width: 98%;
+    }
+
+    .-skin-default.-columns4 .-items .-item .-links a ,
+    .-skin-default.-columns5 .-items .-item .-links a {
+        font-size: 14px ;
+    }
+}
+
+.-skin-default .-items .-item .itembox {
+    width:90%;
+    border: 5px solid #FFFFFF;
+    box-shadow: 3px 3px 5px #888888;
+    background: #FFFFFF;
+    position: relative;
+    margin: 0 auto;
+}
+
+.-skin-default.-skin-default-square .-items .-item .itembox {
+    padding-bottom: 90%;
+    height:0;
+    overflow: hidden;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+
+.-skin-default.-skin-default-round .-items .-item .itembox {
+    padding-bottom: 90%;
+    height:0;
+    overflow: hidden;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.-skin-default .-items .-item .itembox > a {
+    display: block;
+    line-height:0;
+}
+
+.-skin-default .-items .-item .itembox > a > img{
+    width: 100%;
+}
+
+.-skin-default .-items .-item .itembox:hover .-mask,
+.-skin-default .-items .-item .itembox:hover .genericon {
+    display: block;
+}
+.-skin-default .-items .-item .itembox .-mask,
+.-skin-default .-items .-item .itembox .genericon {
+    background: #000;
+    opacity: 0.75;
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-decoration: none;
+}
+.-skin-defaultplus .-items .-item .itembox .genericon:before {
+    font-size: 48px;
+}
+.-skin-default .-items .-item .itembox .genericon {
+    color: #FFFFFF;
+    left: 50%;
+    opacity: 1.0;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    top: 50%;
+    overflow: hidden;
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
+}
+
+
+.-skin-default .-items .-item .-links .-link {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 2% 0;
+    text-align: center;
+}
+
+.-skin-default .-items .-item .-links .-link a{
+    text-decoration: none;
+}
+
+.-skin-default .-items .-item .-links .-onlyonelink{
+    width: 100%;
+}
+
+.-skin-default .-item .title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 5px 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.-skin-default.-columns2 .-item{
+    width: 48% ;
+}
+
+.-skin-default.-columns3 .-item{
+    width: 31.33% ;
+}
+
+.-skin-default.-columns4 .-item{
+    width: 23% ;
+}
+
+.-skin-default.-columns5 .-item{
+    width: 18% ;
+}
+
+.-skin-default.-columns4 .-item .-links a {
+    font-size: 12px;
+}
+
+.-skin-default.-columns5 .-item .-links a {
+    font-size: 11px;
+}
+
+.-skin-default-recent-items .-recent-item {
+    clear: both;
+    padding-top: 10px;
+}
+
+.-skin-default-recent-items a.-recent-item{
+    padding: 0.75em;
+    display: block;
+    margin: 0.3em 0;
+    cursor: pointer;
+    border-radius: 5px;
+    background: rgba(118,117,128,0.05);
+}
+
+.-skin-default-recent-items a.-recent-item img {
+    display: inline-block;
+    width: 50px;
+    margin: 0 10px 0 0;
+    vertical-align: middle;
+    box-shadow: 1px 1px 3px #888888;
+
+}
+
+.-skin-default-recent-items a.-recent-item img.-round-tmb {
+    border-radius: 50%;
+}
+.genericon:before {
+font-size: 100%;
+}

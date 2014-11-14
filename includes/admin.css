@@ -1,0 +1,15 @@
+.admin-main{box-sizing: border-box; width: 80%; margin: auto;}
+.admin-main form.validate{box-sizing: border-box; width: 100%;}
+.admin-section{box-sizing: border-box; width: 100%;padding-top: 5%;padding-bottom: 2%;}
+.admin-section label{box-sizing: border-box; float: left; width: 50%;}
+.admin-section .nimble-radio{box-sizing: border-box; float: left; width: 50%;}
+.admin-section .nimble-radio p{box-sizing: border-box; margin: 0px; padding: 0px; float: left;}
+.admin-section .nimble-radio small.dis{box-sizing: border-box; margin: 10px 0 0; padding: 0px; float: left; width: 80%;}
+.admin-section .nimble-radio small strong{float: right;color: rgba(255, 82, 0, 0.52);}
+.nimble-radio label.radio-button{ border-radius: 10px;color: #000000;}
+.nimble-radio input[type=radio]{display:none; margin:10px;}
+.nimble-radio input[type=radio] + label {display:inline-block;padding: 4px 12px;background-color: #e7e7e7;border-color: #ddd; width: auto; margin: 0 3px;}
+.nimble-radio input[type=radio]:checked + label { background-image: none;background-color: green; color: #FFFFFF !important;}
+.nimble-portfolio-widget-field label, .nimble-portfolio-widget-field input[type="text"], .nimble-portfolio-widget-field  textarea {width: 100%;}
+#nimble-portfolio-shortcode-generator fieldset {border: 2px groove threedface;padding: 0.75em;}
+#nimble-portfolio-shortcode-generator legend {padding-left: 5px;padding-right: 5px;}
