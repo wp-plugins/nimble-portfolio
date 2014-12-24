@@ -95,6 +95,8 @@ $taxonomies = get_object_taxonomies(NimblePortfolioPlugin::getPostType(), 'objec
     });
 </script>
 <div id="nimble-portfolio-shortcode-generator">
+    <h2>Nimble Portfolio - Generate Shortcode</h2>
+    <hr />
     <?php do_action('nimble_portfolio_shortcode_params_before'); ?>
     <p>
         <label for="nimble_portfolio_shortcode_post_type"><?php _e("Post Type", 'nimble_portfolio'); ?>:</label>

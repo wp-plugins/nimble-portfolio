@@ -25,6 +25,9 @@ jQuery(document).ready(function($) {
         $('.nimble-portfolio').trigger("nimble_portfolio_lightbox", {items: $("a[rel^='nimblebox']", ".nimble-portfolio .-item:not(.hidden)")});
     });
 
+    // DOM loaded, remove the loading animation
+    $('.nimble-portfolio').removeClass("-isloading");
+    
     // Apply lightbox gallery
     $('.nimble-portfolio').trigger("nimble_portfolio_lightbox", {items: $("a[rel^='nimblebox']")});
 

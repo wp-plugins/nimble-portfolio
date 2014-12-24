@@ -16,6 +16,9 @@ if (!class_exists('NimblePortfolioItem')) {
             $this->id = $id;
             $this->post = get_post($id);
             $this->params = $params;
+            $settings = NimblePortfolioPlugin::getGlobalSettings();
+            $this->params['force-nothumbcache'] = isset($settings['thumb_nocache']) ? $settings['thumb_nocache'] : false;
+            $this->params['force-exactthumbsize'] = isset($settings['thumb_exact_size']) ? $settings['thumb_exact_size'] : false;
         }
 
         public function __get($name) {

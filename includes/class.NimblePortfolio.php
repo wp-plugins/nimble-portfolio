@@ -18,6 +18,7 @@ if (!class_exists('NimblePortfolio')) {
             $atts['hide_filters'] = isset($atts['hide_filters']) && $atts['hide_filters'] ? 1 : 0;
             $atts['orderby'] = isset($atts['orderby']) && $atts['orderby'] ? $atts['orderby'] : 'menu_order';
             $atts['order'] = isset($atts['order']) && $atts['order'] ? $atts['order'] : 'ASC';
+            $atts['maxposts'] = isset($atts['maxposts']) && $atts['maxposts'] ? $atts['maxposts'] : 20;
             $this->ID = isset($atts['id']) && $atts['id'] ? $atts['id'] : uniqid("np-");
             $this->items = null;
             $this->atts = $atts;
@@ -47,7 +48,7 @@ if (!class_exists('NimblePortfolio')) {
             $args['orderby'] = $atts['orderby'];
             $args['order'] = $atts['order'];
             $args['post_status'] = 'publish';
-            
+
             if (isset($atts['showposts']) && $atts['showposts']){
                 $args['showposts'] = $atts['showposts'];
             }
@@ -72,9 +73,16 @@ if (!class_exists('NimblePortfolio')) {
         }
 
         function renderTemplate() {
+            $global_settings = NimblePortfolioPlugin::getGlobalSettings();
+            $loader_flag = isset($global_settings['loader_flag']) && $global_settings['loader_flag'];
+
             do_action('nimble-portfolio-template-css', $this);
             ?>
-            <div class="nimble-portfolio <?php echo apply_filters("nimble_portfolio_skin_classes", "-skin-$this->skin", $this); ?>" id="<?php echo $this->ID; ?>">
+            <div class="nimble-portfolio <?php echo $loader_flag ? "-isloading" : ""; ?> <?php echo apply_filters("nimble_portfolio_skin_classes", "-skin-$this->skin", $this); ?>" id="<?php echo $this->ID; ?>">
+
+                <?php if ($loader_flag) { ?>
+                    <div class="-loading"><div class="-loader">Loading...</div></div>
+                <?php } ?>
 
                 <?php do_action('nimble_portfolio_skin_before', $this); ?>
 

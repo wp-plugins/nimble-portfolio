@@ -8,12 +8,8 @@ $viewproject_text = $skin_options['viewproject-text'];
 $skin_type = $skin_options['skin-type'];
 $skin_cols = $skin_options['column-type'];
 $hover_icon = $skin_options['hover-icon'] ? $skin_options['hover-icon'] : 'zoom';
-$force_nothumbcache = $skin_options['force-nothumbcache'] ? $skin_options['force-nothumbcache'] : false;
-$force_exactthumbsize = $skin_options['force-exactthumbsize'] ? $skin_options['force-exactthumbsize'] : false;
 $items = $this->getItems();
 foreach ($items as $item) {
-    $item->setParam('force-nothumbcache', $force_nothumbcache);
-    $item->setParam('force-exactthumbsize', $force_exactthumbsize);
     $item_atts = array();
     $item_atts['class'] = $item->getFilters($this->taxonomy);
     $item_atts['class'][] = "-item";

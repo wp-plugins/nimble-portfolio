@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.1.0
+  Version: 2.1.1
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -26,15 +26,18 @@ if (!class_exists('NimblePortfolioPlugin')) {
         static private $taxonomySlug;
         static private $dirPath;
         static private $dirUrl;
+        static private $options;
 
         static function init($params = array()) {
-            self::$version = '2.1.0';
+            self::$version = '2.1.1';
             self::$postType = 'portfolio';
             self::$postTypeSlug = apply_filters('nimble_portfolio_posttype_slug', 'portfolio');
             self::$taxonomy = 'nimble-portfolio-type';
             self::$taxonomySlug = apply_filters('nimble_portfolio_taxonomy_slug', 'portfolio-filter');
             self::$dirPath = dirname(__FILE__);
             self::$dirUrl = self::path2url(self::$dirPath);
+            self::$options = null;
+
             add_theme_support('post-thumbnails', array(self::$postType));
             add_image_size('portfolio_col_thumb', 100, 100, true);
 
@@ -66,6 +69,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
             // Admin Handlers
             add_action('admin_head', array(__CLASS__, 'adminHead'));
             add_action('admin_menu', array(__CLASS__, 'adminOptions'));
+            add_action('current_screen', array(__CLASS__, 'adminScreen'));
             add_action('save_post', array(__CLASS__, 'updateData'), 1, 2);
 
             add_action('wp_ajax_nimble_portfolio_tinymce', array(__CLASS__, 'ajaxTinymceShortcodeParams'));
@@ -78,14 +82,14 @@ if (!class_exists('NimblePortfolioPlugin')) {
             do_action('nimble_portfolio_init');
         }
 
-        function path2url($path) {
+        static function path2url($path) {
             if (!defined('ABSPATH')) {
                 return false;
             }
             return trim(site_url(), '/\\') . "/" . str_replace("\\", "/", trim(substr_replace($path, '', 0, strlen(ABSPATH)), '/'));
         }
 
-        function phpvar2htmlatt($atts) {
+        static function phpvar2htmlatt($atts) {
             $return = ' ';
             if (is_array($atts) && count($atts)) {
                 foreach ($atts as $att => $val) {
@@ -95,37 +99,37 @@ if (!class_exists('NimblePortfolioPlugin')) {
             return $return;
         }
 
-        function getVersion() {
+        static function getVersion() {
             return self::$version;
         }
 
-        function getPostType() {
+        static function getPostType() {
             return self::$postType;
         }
 
-        function getPostTypeSlug() {
+        static function getPostTypeSlug() {
             return self::$postTypeSlug;
         }
 
-        function getTaxonomy() {
+        static function getTaxonomy() {
             return self::$taxonomy;
         }
 
-        function getTaxonomySlug() {
+        static function getTaxonomySlug() {
             return self::$taxonomySlug;
         }
 
-        function getPath($tail) {
+        static function getPath($tail) {
             $tail = trim($tail, '/');
             return self::$dirPath . ($tail ? "/$tail/" : "/");
         }
 
-        function getUrl($tail) {
+        static function getUrl($tail) {
             $tail = trim($tail, '/');
             return self::$dirUrl . ($tail ? "/$tail/" : "/");
         }
 
-        function updateData($post_id, $post) {
+        static function updateData($post_id, $post) {
 
             if (!wp_verify_nonce(@$_POST['nimble_portfolio_noncename'], plugin_basename(__FILE__))) {
                 return;
@@ -152,7 +156,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
             }
         }
 
-        function renameMenuTitle($safe_text, $text) {
+        static function renameMenuTitle($safe_text, $text) {
             if (__('Portfolio Items', 'nimble_portfolio_context') !== $text) {
                 return $safe_text;
             }
@@ -162,16 +166,16 @@ if (!class_exists('NimblePortfolioPlugin')) {
             return __('Nimble Portfolio', 'nimble_portfolio_context');
         }
 
-        function onActivate() {
+        static function onActivate() {
             self::registerPostType();
             flush_rewrite_rules();
         }
 
-        function onDeactivate() {
+        static function onDeactivate() {
             flush_rewrite_rules();
         }
 
-        function registerPostType() {
+        static function registerPostType() {
 
             $labels = array(
                 'name' => __('Portfolio Items'),
@@ -213,7 +217,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
             self::registerTaxonomy(self::$postType);
         }
 
-        function registerTaxonomy($postType = null) {
+        static function registerTaxonomy($postType = null) {
 
             if ($postType === null) {
                 return;
@@ -246,7 +250,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
             register_taxonomy(self::$taxonomy, $postType, $args);
         }
 
-        function tinymceShortcodeButton() {
+        static function tinymceShortcodeButton() {
 
             if (!current_user_can('edit_posts') && !current_user_can('edit_pages') && get_user_option('rich_editing') == 'true') {
                 return;
@@ -256,27 +260,27 @@ if (!class_exists('NimblePortfolioPlugin')) {
             add_filter('mce_buttons', array(__CLASS__, 'registerTinymceButton'));
         }
 
-        function registerTinymcePlugin($plugin_array) {
+        static function registerTinymcePlugin($plugin_array) {
             $plugin_array['nimble_portfolio_button'] = self::$dirUrl . '/includes/tinymce-plugin.js';
             return $plugin_array;
         }
 
-        function registerTinymceButton($buttons) {
+        static function registerTinymceButton($buttons) {
             $buttons[] = "nimble_portfolio_button";
             return $buttons;
         }
 
-        function ajaxTinymceShortcodeParams() {
+        static function ajaxTinymceShortcodeParams() {
             include "includes/tinymce-plugin.php";
             exit;
         }
 
-        function ajaxTinymceSkinChange() {
+        static function ajaxTinymceSkinChange() {
             do_action('nimble_portfolio_tinymce_skin_change', $_GET['skin']);
             exit;
         }
 
-        function ajaxTinymcePostTypeChange() {
+        static function ajaxTinymcePostTypeChange() {
             $post_type = $_GET['post_type'];
             $all_taxonomies = get_taxonomies(array('public' => true), 'names');
             $taxonomies = get_object_taxonomies($post_type, 'objects');
@@ -300,12 +304,12 @@ if (!class_exists('NimblePortfolioPlugin')) {
             exit;
         }
 
-        function ajaxShortcodeGenSkinChange() {
+        static function ajaxShortcodeGenSkinChange() {
             do_action('nimble_portfolio_shortcode_skin_change', $_GET['skin']);
             exit;
         }
 
-        function ajaxShortcodeGenPostTypeChange() {
+        static function ajaxShortcodeGenPostTypeChange() {
             $post_type = $_GET['post_type'];
             $all_taxonomies = get_taxonomies(array('public' => true), 'names');
             $taxonomies = get_object_taxonomies($post_type, 'objects');
@@ -333,21 +337,21 @@ if (!class_exists('NimblePortfolioPlugin')) {
             exit;
         }
 
-        function getPortfolio($atts) {
+        static function getPortfolio($atts) {
             ob_start();
             self::showPortfolio($atts);
             $content = ob_get_clean();
             return $content;
         }
 
-        function showPortfolio($atts = array()) {
+        static function showPortfolio($atts = array()) {
 
             $nimble_portfolio = new NimblePortfolio($atts);
 
             $nimble_portfolio->renderTemplate();
         }
 
-        function enqueueStyle() {
+        static function enqueueStyle() {
 
             $nimblebox = apply_filters('nimble_portfolio_lightbox_style', self::getUrl('includes') . "prettyphoto/prettyphoto.css");
             if ($nimblebox) {
@@ -359,10 +363,12 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 wp_enqueue_style('nimblesort-style', $nimblesort);
             }
 
+            wp_enqueue_style('nimble-portfolio-style', file_exists(get_template_directory() . "/nimble-portfolio/nimble-portfolio.css") ? get_template_directory_uri() . "/nimble-portfolio/nimble-portfolio.css" : self::getUrl('includes') . "nimble-portfolio.css");
+
             do_action('nimble_portfolio_enqueue_style');
         }
 
-        function enqueueScript() {
+        static function enqueueScript() {
 
             $nimblebox = apply_filters('nimble_portfolio_lightbox_script', self::getUrl('includes') . "prettyphoto/prettyphoto.js");
             if ($nimblebox) {
@@ -374,27 +380,45 @@ if (!class_exists('NimblePortfolioPlugin')) {
                 wp_enqueue_script('nimblesort-script', $nimblesort, array('jquery'), self::$version);
             }
 
+            $nimblesort = apply_filters('nimble_portfolio_sort_script', self::getUrl('includes') . 'nimble-portfolio.js');
             do_action('nimble_portfolio_enqueue_script');
         }
 
-        function adminHead() {
+        static function adminHead() {
             wp_enqueue_style('nimble-portfolio-admin', self::getUrl('includes') . "admin.css", null, null, "all");
-            wp_register_script('nimble-portfolio-admin', self::getUrl('includes') . 'admin.js', array('jquery'), self::$version);
+            wp_enqueue_style('nimble-portfolio-spectrum', self::getUrl('includes') . "spectrum/spectrum.css", null, null, "all");
+            wp_register_script('nimble-portfolio-spectrum', self::getUrl('includes') . 'spectrum/spectrum.js', array('jquery'), '1.6.0');
+            wp_register_script('nimble-portfolio-admin', self::getUrl('includes') . 'admin.js', array('jquery', 'nimble-portfolio-spectrum'), self::$version);
+            wp_enqueue_script('nimble-portfolio-spectrum');
             wp_enqueue_script('nimble-portfolio-admin');
         }
 
-        function adminOptions() {
-            add_submenu_page('edit.php?post_type=' . self::$postType, 'Generate Shortcode', 'Generate Shortcode', 'manage_options', 'nimble-portfolio-skin-setting-portfolios', array(__CLASS__, 'shortcodeGeneratorPage'));
+        static function adminScreen() {
+
+            $currentScreen = get_current_screen();
+
+            if ($currentScreen->post_type === "portfolio" && $currentScreen->base === $currentScreen->id) {
+                require_once("includes/class.NimblePortfolioLessC.php");
+            }
+        }
+
+        static function adminOptions() {
+            add_submenu_page('edit.php?post_type=' . self::$postType, 'Generate Shortcode', 'Generate Shortcode', 'manage_options', 'nimble-portfolio-gen-shortcode', array(__CLASS__, 'shortcodeGeneratorPage'));
+            add_submenu_page('edit.php?post_type=' . self::$postType, 'Global Settings', 'Global Settings', 'manage_options', 'nimble-portfolio-global-settings', array(__CLASS__, 'globalSettings'));
             do_action('nimble_portfolio_create_section_before', self::$postType);
             add_meta_box('nimble-portfolio-section-options', __('Options', 'nimble_portfolio_context'), array(__CLASS__, 'renderOptions'), self::$postType, 'normal', 'high');
             do_action('nimble_portfolio_create_section_after', self::$postType);
         }
 
-        function shortcodeGeneratorPage() {
+        static function shortcodeGeneratorPage() {
             include("includes/shortcode-generator.php");
         }
 
-        function renderOptions($post) {
+        static function globalSettings() {
+            include("includes/global-settings.php");
+        }
+
+        static function renderOptions($post) {
             $item = new NimblePortfolioItem($post->ID);
             ?>
             <div class="nimble-portfolio-meta-section">
@@ -422,14 +446,14 @@ if (!class_exists('NimblePortfolioPlugin')) {
             <?php
         }
 
-        function adminPostsColumns($cols) {
+        static function adminPostsColumns($cols) {
             $cols['filters'] = __('Filters', 'nimble_portfolio_context');
             $cols['thumbnail'] = __('Thumbnail', 'nimble_portfolio_context');
             $cols['sort-order'] = __('Sort Order', 'nimble_portfolio_context');
             return $cols;
         }
 
-        function adminPostsCustomColumn($column_name) {
+        static function adminPostsCustomColumn($column_name) {
             $item = new NimblePortfolioItem(get_the_ID());
             if ($column_name == 'thumbnail') {
                 echo '<img src="' . $item->getThumbnail('portfolio_col_thumb') . '" />';
@@ -447,23 +471,34 @@ if (!class_exists('NimblePortfolioPlugin')) {
             }
         }
 
-        function getOptions() {
-            return get_option('nimble-portfolio-config', array());
+        static function getOptions() {
+            if (self::$options === null) {
+                self::$options = get_option('nimble-portfolio-config', array());
+            }
+            return self::$options;
         }
 
-        function setOptions($options = array()) {
+        static function setOptions($options = array()) {
             update_option('nimble-portfolio-config', $options);
+            self::$options = $options;
         }
 
-        function getTaxonomyMeta($term_id, $key) {
+        static function getGlobalSettings() {
+            if (self::$options === null) {
+                self::$options = self::getOptions();
+            }
+            return self::$options['global-settings'];
+        }
+
+        static function getTaxonomyMeta($term_id, $key) {
             if (!$term_id || !$key) {
                 return null;
             }
             $options = self::getOptions();
-            return $options['taxonomymeta'][$term_id][$key];
+            return @$options['taxonomymeta'][$term_id][$key];
         }
 
-        function updateTaxonomyMeta($term_id, $key, $val = null) {
+        static function updateTaxonomyMeta($term_id, $key, $val = null) {
             if (!$term_id || !$key) {
                 return;
             }
@@ -472,12 +507,12 @@ if (!class_exists('NimblePortfolioPlugin')) {
             self::setOptions($options);
         }
 
-        function taxonomyColumnHeader($columns) {
+        static function taxonomyColumnHeader($columns) {
             $columns["sort-order"] = __("Sort Order", "nimble_portfolio_context");
             return $columns;
         }
 
-        function taxonomyEditFormField() {
+        static function taxonomyEditFormField() {
             ?>
             <tr class="form-field">
                 <th valign="top" scope="row">
@@ -491,7 +526,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
             <?php
         }
 
-        function taxonomyAddFormField() {
+        static function taxonomyAddFormField() {
             ?>
             <div class="form-field">
                 <label for="sort-order"><?php _e("Sort Order", "nimble_portfolio_context"); ?></label>
@@ -501,19 +536,19 @@ if (!class_exists('NimblePortfolioPlugin')) {
             <?php
         }
 
-        function saveTaxonomyValue($term_id) {
+        static function saveTaxonomyValue($term_id) {
             if (isset($_POST['sort-order']))
                 self::updateTaxonomyMeta($term_id, 'sort-order', $_POST['sort-order']);
         }
 
-        function taxonomyCustomValue($empty, $custom_column, $term_id) {
+        static function taxonomyCustomValue($empty, $custom_column, $term_id) {
 
             if ($custom_column == 'sort-order') {
                 return self::getTaxonomyMeta($term_id, $custom_column);
             }
         }
 
-        function taxonomyQuickEditField($column_name, $screen, $name = null) {
+        static function taxonomyQuickEditField($column_name, $screen, $name = null) {
             if ($column_name == 'sort-order') {
                 ?>  
                 <fieldset>  
@@ -537,9 +572,9 @@ if (!class_exists('NimblePortfolioPlugin')) {
     }
 
     function nimble_portfolio_show($atts = array()) {
-
         NimblePortfolioPlugin::showPortfolio($atts);
     }
 
 }
+
 include("skins/default/skin.php"); // Includes default skin

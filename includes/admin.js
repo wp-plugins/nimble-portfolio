@@ -1,6 +1,6 @@
-(function($) {
+(function ($) {
     var file_frame;
-    $('#nimble_portfolio_media_lib').live('click', function(event) {
+    $('#nimble_portfolio_media_lib').live('click', function (event) {
         var imgfield = $(this).attr('rel');
         event.preventDefault();
 
@@ -23,7 +23,7 @@
             }
         });
 
-        file_frame.on('select', function() {
+        file_frame.on('select', function () {
             var attachment = file_frame.state().get('selection').first().toJSON();
             $('#' + imgfield).val(attachment.url);
         });
@@ -32,9 +32,25 @@
     });
 
     // Quick edit box of Filter
-    $("#the-list").on('click', 'a.editinline', function() {
+    $("#the-list").on('click', 'a.editinline', function () {
         var tag_id = $(this).parents('tr').attr('id');
         var sort_order = $('.sort-order', '#' + tag_id).text();
         $(':input[name="sort-order"]', '.inline-edit-row').val(sort_order);
     });
+
+    // color box control for admin
+    $("input.color-rgb").spectrum({
+        chooseText: "Select Color",
+        preferredFormat: "hex",
+        showInput: true
+    });
+
+    // color box control (with transparency) for admin
+    $("input.color-rgba").spectrum({
+        chooseText: "Select Color",
+        preferredFormat: "hex",
+        showInput: true,
+        showAlpha: true
+    });
+
 })(jQuery);
