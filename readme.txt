@@ -12,6 +12,8 @@ A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/
 
 <h3>Nimble Portfolio</h3>
 
+As the festive season is in full swing we are delighted to let Santa bring you a massive package to add more joy to your celebrations. This special package includes all of our premium portfolio addons in one big great value bundle. This package includes all of our premium addons for Nimble3 Portfolio for half the price. [Click here to get the bundle.](http://www.nimble3.com/shop/nimble3-portfolio-xmas-new-year-bundle-inc-all-addons)
+
 This free plugin can transform a humble wordpress website into a feature rich media gallery where you can proudly showcase your projects, client logos, photography, or any other pictures or videos of your choice. You can group the contents of your media gallery using the built-in jQuery sort filters and display them on any theme of your choice. It comes with built-in PrettyPhoto lighbox but can also be customized easily by using other add-ons. This plugin is also responsive which means it would work perfectly on desktop, tablet and mobile screen sizes.  If you read through our documentation we have provided step by step instructions to use the various features and functionality of this plugin.
 
 = Plugin Features =
