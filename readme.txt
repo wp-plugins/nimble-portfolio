@@ -4,7 +4,7 @@ Donate link: http://www.nimble3.com
 Tags: picture, portfolio, gallery, picture gallery, media gallery, filterable portfolio, filterable gallery, jquery portfolio, sortable portfolio, skin based portfolio, prettyphoto, lightbox, prettyphoto lightbox, media gallery, prettyphoto gallery, lightbox gallery, responsive portfolio, responsive picture gallery, responsive media gallery, responsive design, isotope, fancybox, magnific popup, swipebox, ihover, best portfolio plugin, best gallery plugin, best grid gallery, best portfolio grid
 Requires at least: 3.5.1
 Tested up to: 4.1
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 
 A powerful portfolio/gallery plugin, highly suitable to showcase your portfolio/pictures/videos/media and sort them nicely under filterable tabs.
@@ -93,13 +93,18 @@ Please use Support tab OR use this link http://demo.nimble3.com/nimble-portfolio
 
 == Changelog ==
 
+= 29 Dec 2014 =
+
+FIXED: Notice: Undefined index: global-settings in "wp-content/plugins/nimble-portfolio/nimble-portfolio.php" on line 490
+
+2.1.2
+
 = 24 Dec 2014 =
 
 2.1.1
 
-* Loadign animation added.
+* Loading animation added.
 * Global Settings added.
-* Spectrum color lib for admin.
 * Thumb cache and size settings moved to global settings from skin settings.
 * LESS Compiler integrated for flexible CSS changes via admin
 

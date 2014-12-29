@@ -1,6 +1,6 @@
 <?php
 $options = self::getOptions();
-$settings = $options['global-settings'];
+$settings = @$options['global-settings'];
 if (isset($_POST['nimble_portfolio_save'])) {
     $settings = @$_POST['settings'];
     $options['global-settings'] = $settings;
