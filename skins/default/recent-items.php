@@ -5,6 +5,7 @@
     $items = $this->getItems();
     foreach ($items as $item) {
         $item_atts = array();
+        $item_atts['href'] = $item->getpermalink();
         $item_atts['class'] = $item->getFilters($this->taxonomy);
         $item_atts['class'][] = "-recent-item";
         $item_atts['id'] = "recent-item-" . $item->ID;
