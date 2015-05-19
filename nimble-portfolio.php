@@ -3,7 +3,7 @@
   Plugin Name: Nimble Portfolio
   Plugin URI: http://nimble3.com/demo/nimble-portfolio-free/
   Description: Using this free plugin you can transform your portfolio in to a cutting edge jQuery powered gallery that lets you feature and sort your work like a pro.
-  Version: 2.1.3
+  Version: 2.1.4
   Author: Nimble3
   Author URI: http://www.nimble3.com/
   License: GPLv2 or later
@@ -18,7 +18,7 @@ include("includes/class.NimblePortfolioRecentItemsWidget.php");
 if (!class_exists('NimblePortfolioPlugin')) {
 
     class NimblePortfolioPlugin {
-
+     
         static private $version;
         static private $postType;
         static private $postTypeSlug;
@@ -29,7 +29,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
         static private $options;
 
         static function init($params = array()) {
-            self::$version = '2.1.3';
+            self::$version = '2.1.4';
             self::$postType = 'portfolio';
             self::$postTypeSlug = apply_filters('nimble_portfolio_posttype_slug', 'portfolio');
             self::$taxonomy = 'nimble-portfolio-type';
@@ -51,7 +51,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
             add_shortcode('nimble-portfolio', array(__CLASS__, 'getPortfolio'));
 
-            add_action('wp_head', array(__CLASS__, 'enqueueStyle'));
+            add_action('wp_head', array(__CLASS__, 'enqueueStyle'),1);
             add_action('wp_head', array(__CLASS__, 'enqueueScript'));
 
             add_filter('manage_' . self::$postType . '_posts_columns', array(__CLASS__, 'adminPostsColumns'));
@@ -131,15 +131,24 @@ if (!class_exists('NimblePortfolioPlugin')) {
 
         static function updateData($post_id, $post) {
 
-            if (!wp_verify_nonce(@$_POST['nimble_portfolio_noncename'], plugin_basename(__FILE__))) {
-                return;
-            }
 
             if ($post->post_type == 'revision') {
                 return;
             }
 
             if (!current_user_can('edit_post', $post->ID)) {
+                return;
+            }
+
+            if (isset($_POST['sort-order']) && $post->menu_order != $_POST['sort-order']){
+                $my_post = array(
+                    'ID'           => $post->ID,
+                    'menu_order' => $_POST['sort-order']
+                );
+                wp_update_post( $my_post );
+            }
+
+            if (!wp_verify_nonce(@$_POST['nimble_portfolio_noncename'], plugin_basename(__FILE__))) {
                 return;
             }
 
@@ -555,7 +564,7 @@ if (!class_exists('NimblePortfolioPlugin')) {
                     <div id="my-custom-content" class="inline-edit-col">  
                         <label>  
                             <span class="title"><?php _e("Sort Order", "nimble_portfolio_context"); ?></span>  
-                            <span class="input-text-wrap"><input name="<?php echo $column_name; ?>" class="ptitle" value="" type="text"></span>  
+                            <span class="input-text-wrap"><input id="nimble-portfolio-sort-order" name="<?php echo $column_name; ?>" class="ptitle" value="" type="text"></span>  
                         </label>  
                     </div>  
                 </fieldset>  
@@ -576,5 +585,4 @@ if (!class_exists('NimblePortfolioPlugin')) {
     }
 
 }
-
 include("skins/default/skin.php"); // Includes default skin
