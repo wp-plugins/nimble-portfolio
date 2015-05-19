@@ -1,0 +1,98 @@
+.nimble-portfolio.-isloading > * {
+    visibility: hidden;
+}
+.nimble-portfolio.-isloading {
+    position:relative;
+}
+
+.nimble-portfolio .-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0,0,0,0);
+    visibility:hidden;
+    opacity:0;
+    -webkit-transition: visibility 0s linear 0.2s,opacity 0.2s linear;
+    -moz-transition: visibility 0s linear 0.2s,opacity 0.2s linear;
+    -o-transition: visibility 0s linear 0.2s,opacity 0.2s linear;
+    -ms-transition: visibility 0s linear 0.2s,opacity 0.2s linear;
+    transition:visibility 0s linear 0.2s,opacity 0.2s linear;
+}
+
+.nimble-portfolio.-isloading .-loading {
+    visibility:visible;
+    opacity:1;
+    -webkit-transition-delay:0s;
+    -moz-transition-delay:0s;
+    -o-transition-delay:0s;
+    -ms-transition-delay:0s;
+    transition-delay:0s;
+}
+
+.nimble-portfolio .-loading .-loader,
+.nimble-portfolio .-loading .-loader:before,
+.nimble-portfolio .-loading .-loader:after {
+    background: @loader_color;
+    -webkit-animation: nimble-portfolio-loadanim1 1s infinite ease-in-out;
+    animation: nimble-portfolio-loadanim1 1s infinite ease-in-out;
+    width: 1em;
+    height: 4em;
+}
+
+.nimble-portfolio .-loading .-loader:before,
+.nimble-portfolio .-loading .-loader:after {
+    position: absolute;
+    top: 0;
+    content: '';
+}
+
+.nimble-portfolio .-loading .-loader:before {
+    left: -1.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.nimble-portfolio .-loading .-loader {
+    text-indent: -9999em;
+    margin: 8em auto;
+    position: relative;
+    font-size: @loader_size;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.nimble-portfolio .-loading .-loader:after {
+    left: 1.5em;
+}
+
+@-webkit-keyframes nimble-portfolio-loadanim1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0 @loader_color;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em @loader_color;
+        height: 5em;
+    }
+}
+
+@keyframes nimble-portfolio-loadanim1 {
+    0%,
+    80%,
+    100% {
+        box-shadow: 0 0 @loader_color;
+        height: 4em;
+    }
+    40% {
+        box-shadow: 0 -2em @loader_color;
+        height: 5em;
+    }
+}
